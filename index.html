@@ -47,8 +47,6 @@
             overflow: hidden;
             padding: 40px;
             position: relative;
-            border: 20px solid transparent;
-            border-image: repeating-linear-gradient(45deg, #8b6b4d, #c9a959, #8b6b4d) 30 stretch;
         }
 
         .container::before {
@@ -134,18 +132,17 @@
             background: #fff5e6;
             border: 3px solid #8b6b4d;
             color: #2c1810;
-            padding: 40px 20px;
-            font-size: 1.5em;
+            padding: 35px 20px;
+            font-size: 1.4em;
             font-weight: 600;
-            border-radius: 60px 60px 60px 60px / 80px 80px 80px 80px;
+            border-radius: 60px;
             cursor: pointer;
             transition: all 0.4s ease;
             text-align: center;
-            box-shadow: 0 15px 30px rgba(44, 24, 16, 0.3), inset 0 2px 5px rgba(201, 169, 89, 0.3);
+            box-shadow: 0 15px 30px rgba(44, 24, 16, 0.3);
             position: relative;
             overflow: hidden;
             font-family: 'Amiri', serif;
-            letter-spacing: 1px;
         }
 
         .menu-btn::before {
@@ -164,21 +161,10 @@
             transform: translateX(100%);
         }
 
-        .menu-btn::after {
-            content: 'ⵌ';
-            position: absolute;
-            bottom: 5px;
-            right: 20px;
-            color: #c9a959;
-            font-size: 1.2em;
-            opacity: 0.5;
-        }
-
         .menu-btn:hover {
             background: #2c1810;
             color: #c9a959;
-            transform: translateY(-8px) scale(1.02);
-            box-shadow: 0 25px 40px rgba(0, 0, 0, 0.4), 0 0 0 3px #c9a959;
+            transform: translateY(-8px);
             border-color: #c9a959;
         }
 
@@ -186,9 +172,8 @@
             background: #8b6b4d;
             color: #fdf3e0;
             border-color: #c9a959;
-            font-size: 1.8em;
+            font-size: 1.6em;
             grid-column: span 2;
-            box-shadow: 0 15px 30px rgba(201, 169, 89, 0.3);
         }
 
         .menu-btn.special:hover {
@@ -204,7 +189,7 @@
             background: #fff5e6;
             padding: 20px 30px;
             border-radius: 80px;
-            box-shadow: 0 10px 20px rgba(44, 24, 16, 0.2), inset 0 1px 5px #c9a959;
+            box-shadow: 0 10px 20px rgba(44, 24, 16, 0.2);
             border: 2px solid #8b6b4d;
         }
 
@@ -213,7 +198,6 @@
             color: #2c1810;
             font-weight: 700;
             font-family: 'Amiri', serif;
-            text-shadow: 1px 1px 2px #c9a959;
         }
 
         .back-btn {
@@ -228,14 +212,12 @@
             border: 2px solid #c9a959;
             font-family: 'Amiri', serif;
             transition: all 0.3s ease;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
         }
 
         .back-btn:hover {
             background: #c9a959;
             color: #2c1810;
             border-color: #2c1810;
-            transform: scale(1.05);
         }
 
         .quiz-container {
@@ -243,7 +225,7 @@
             border-radius: 50px;
             padding: 40px;
             margin: 20px 0;
-            box-shadow: 0 20px 40px rgba(44, 24, 16, 0.3), inset 0 0 0 2px #c9a959;
+            box-shadow: 0 20px 40px rgba(44, 24, 16, 0.3);
             border: 3px solid #8b6b4d;
             position: relative;
         }
@@ -279,7 +261,6 @@
             font-size: 1.3em;
             font-weight: 700;
             font-family: 'Amiri', serif;
-            border: 2px solid #fdf3e0;
         }
 
         .progress-bar {
@@ -289,7 +270,6 @@
             border-radius: 20px;
             overflow: hidden;
             min-width: 200px;
-            border: 1px solid #c9a959;
         }
 
         .progress-fill {
@@ -297,11 +277,10 @@
             background: linear-gradient(90deg, #c9a959, #f3d9a4);
             width: 0%;
             transition: width 0.4s ease;
-            box-shadow: 0 0 10px #c9a959;
         }
 
         .question-text {
-            font-size: 1.6em;
+            font-size: 1.5em;
             color: #2c1810;
             margin: 30px 0 35px;
             padding: 30px;
@@ -309,20 +288,7 @@
             border-radius: 40px;
             line-height: 1.8;
             border-right: 8px solid #c9a959;
-            border-left: 2px solid #8b6b4d;
             font-family: 'Amiri', serif;
-            box-shadow: inset 0 2px 10px rgba(139, 107, 77, 0.1);
-            position: relative;
-        }
-
-        .question-text::before {
-            content: '❝';
-            position: absolute;
-            top: 10px;
-            right: 20px;
-            color: #c9a959;
-            font-size: 2em;
-            opacity: 0.3;
         }
 
         .options-grid {
@@ -335,49 +301,28 @@
         .option-btn {
             background: #fdf3e0;
             border: 3px solid #8b6b4d;
-            padding: 22px 35px;
+            padding: 20px 35px;
             border-radius: 100px;
-            font-size: 1.3em;
+            font-size: 1.25em;
             text-align: right;
             cursor: pointer;
             transition: all 0.3s ease;
             color: #2c1810;
             font-weight: 600;
             font-family: 'Amiri', serif;
-            position: relative;
-            overflow: hidden;
-            box-shadow: 0 8px 0 #5a3e2b;
-        }
-
-        .option-btn::before {
-            content: '◈';
-            position: absolute;
-            left: 25px;
-            color: #c9a959;
-            font-size: 1.2em;
-            opacity: 0.5;
-            transition: all 0.3s ease;
         }
 
         .option-btn:hover {
             background: #2c1810;
             color: #c9a959;
             border-color: #c9a959;
-            transform: translateY(-5px);
-            box-shadow: 0 13px 0 #5a3e2b;
-        }
-
-        .option-btn:hover::before {
-            color: #fdf3e0;
-            transform: rotate(180deg);
+            transform: translateX(-5px);
         }
 
         .option-btn.selected {
             background: #c9a959;
             color: #2c1810;
             border-color: #2c1810;
-            transform: translateY(-2px);
-            box-shadow: 0 10px 0 #5a3e2b;
         }
 
         .nav-buttons {
@@ -399,29 +344,17 @@
             min-width: 180px;
             font-family: 'Amiri', serif;
             transition: all 0.3s ease;
-            box-shadow: 0 8px 0 #5a3e2b;
-            position: relative;
-        }
-
-        .nav-btn::after {
-            content: '←';
-            margin-right: 10px;
-            font-size: 1.2em;
         }
 
         .nav-btn:hover:not(:disabled) {
             background: #c9a959;
             color: #2c1810;
-            transform: translateY(-5px);
-            box-shadow: 0 13px 0 #5a3e2b;
             border-color: #2c1810;
         }
 
         .nav-btn:disabled {
             opacity: 0.3;
             cursor: not-allowed;
-            transform: none;
-            box-shadow: 0 5px 0 #5a3e2b;
         }
 
         .result-card {
@@ -429,7 +362,7 @@
             border-radius: 60px;
             padding: 50px;
             text-align: center;
-            box-shadow: 0 30px 50px rgba(44, 24, 16, 0.4), inset 0 0 0 3px #c9a959;
+            box-shadow: 0 30px 50px rgba(44, 24, 16, 0.4);
             margin: 25px 0;
             border: 4px solid #8b6b4d;
             position: relative;
@@ -448,29 +381,23 @@
         }
 
         .result-score {
-            font-size: 5.5em;
+            font-size: 5em;
             color: #2c1810;
             font-weight: 800;
             margin: 25px 0;
             display: inline-block;
-            padding: 30px 80px;
+            padding: 25px 70px;
             background: linear-gradient(145deg, #fdf3e0, #fff5e6);
             border-radius: 200px;
             border: 5px solid #c9a959;
             font-family: 'Amiri', serif;
-            text-shadow: 3px 3px 0 #c9a959;
-            box-shadow: inset 0 -5px 0 #8b6b4d;
         }
 
         .result-message {
-            font-size: 2em;
+            font-size: 1.8em;
             color: #2c1810;
             margin: 25px 0;
             font-family: 'Amiri', serif;
-            background: #fdf3e0;
-            padding: 20px;
-            border-radius: 80px;
-            border: 2px dashed #c9a959;
         }
 
         .answers-review {
@@ -482,29 +409,14 @@
             background: #fdf3e0;
             border-radius: 40px;
             border: 3px solid #8b6b4d;
-            box-shadow: inset 0 0 20px rgba(139, 107, 77, 0.2);
         }
 
         .answer-item {
             background: #fff5e6;
-            padding: 25px 30px;
-            margin-bottom: 20px;
-            border-radius: 30px;
-            border-right: 8px solid #c9a959;
-            border-left: 2px solid #8b6b4d;
-            box-shadow: 0 5px 15px rgba(44, 24, 16, 0.1);
-            font-family: 'Amiri', serif;
-            position: relative;
-        }
-
-        .answer-item::before {
-            content: '•';
-            color: #c9a959;
-            font-size: 2em;
-            position: absolute;
-            right: -10px;
-            top: 50%;
-            transform: translateY(-50%);
+            padding: 20px 25px;
+            margin-bottom: 15px;
+            border-radius: 25px;
+            border-right: 6px solid #c9a959;
         }
 
         .answer-item.correct-user {
@@ -521,33 +433,20 @@
             text-align: center;
             margin-top: 30px;
             color: #8b6b4d;
-            font-size: 1.2em;
+            font-size: 1.1em;
             font-family: 'Amiri', serif;
             border-top: 2px dotted #c9a959;
             padding-top: 20px;
-            position: relative;
-        }
-
-        .footer-note::before {
-            content: '❉';
-            color: #c9a959;
-            margin-left: 10px;
-        }
-
-        .footer-note::after {
-            content: '❉';
-            color: #c9a959;
-            margin-right: 10px;
         }
 
         @media (max-width: 700px) {
             .container { padding: 20px; }
-            h1 { font-size: 2.5em; }
+            h1 { font-size: 2.2em; }
             .main-menu { grid-template-columns: 1fr; }
             .menu-btn.special { grid-column: span 1; }
-            .question-text { font-size: 1.3em; }
+            .question-text { font-size: 1.2em; }
             .option-btn { font-size: 1.1em; padding: 15px 25px; }
-            .result-score { font-size: 3.5em; padding: 20px 40px; }
+            .result-score { font-size: 3em; padding: 15px 30px; }
         }
     </style>
 </head>
@@ -560,26 +459,26 @@
             
             <div class="main-menu">
                 <button class="menu-btn" @click="startUnitTest('الحياة السياسية', 4)">
-                    🏛️ الحياة السياسية
+                    🏛️ الحياة السياسية في الأردن
                 </button>
                 <button class="menu-btn" @click="startUnitTest('الحياة الاقتصادية', 5)">
-                    💼 الحياة الاقتصادية
+                    💼 الحياة الاقتصادية في الأردن
                 </button>
                 <button class="menu-btn" @click="startUnitTest('الحياة الاجتماعية', 6)">
-                    👥 الحياة الاجتماعية
+                    👥 الحياة الاجتماعية في الأردن
                 </button>
                 <button class="menu-btn" @click="startUnitTest('التعليم والثقافة', 7)">
-                    📖 التعليم والثقافة
+                    📖 التعليم والثقافة في الأردن
                 </button>
                 <button class="menu-btn" @click="startUnitTest('الأردن والقضية الفلسطينية', 8)">
-                    🇵🇸 الأردن وفلسطين
+                    🇵🇸 الأردن والقضية الفلسطينية
                 </button>
                 <button class="menu-btn special" @click="startComprehensiveExam()">
                     📜 الامتحان الشامل (50 سؤال)
                 </button>
             </div>
             <div class="footer-note">
-                كل وحدة تحتوي على 20 سؤالاً | الشامل 50 سؤالاً عشوائياً
+                كل وحدة تحتوي على 20 سؤالاً | الشامل 50 سؤالاً عشوائياً من جميع الوحدات
             </div>
         </div>
 
@@ -640,22 +539,20 @@
                     {{ getResultMessage }}
                 </div>
                 
-                <div style="font-size: 1.6em; color: #2c1810; margin: 20px 0; font-family: 'Amiri', serif;">
+                <div style="font-size: 1.5em; color: #2c1810; margin: 20px 0;">
                     نسبة الإجابة الصحيحة: {{ ((score / totalQuestions) * 100).toFixed(1) }}%
                 </div>
 
-                <button class="back-btn" @click="backToMain" style="margin: 20px auto; font-size: 1.3em;">امتحان جديد</button>
+                <button class="back-btn" @click="backToMain" style="margin: 20px auto;">امتحان جديد</button>
 
                 <div class="answers-review">
-                    <h3 style="margin-bottom: 30px; color: #2c1810; font-size: 1.8em; text-align: center; font-family: 'Amiri', serif;">
-                        ✦ مراجعة الإجابات ✦
-                    </h3>
+                    <h3 style="margin-bottom: 25px; color: #2c1810; font-size: 1.6em; text-align: center;">✧ مراجعة الإجابات ✧</h3>
                     <div v-for="(item, index) in reviewAnswers" :key="index" 
                          class="answer-item" 
                          :class="{ 'correct-user': item.isCorrect, 'wrong-user': !item.isCorrect }">
-                        <strong style="color: #c9a959; font-size: 1.3em;">س{{ index + 1 }}:</strong>
-                        <div style="margin-top: 15px; padding-right: 25px; font-size: 1.2em;">
-                            <div style="color: #2c1810; margin-bottom: 10px;">{{ item.question }}</div>
+                        <strong style="color: #c9a959; font-size: 1.2em;">س{{ index + 1 }}:</strong>
+                        <div style="margin-top: 12px; padding-right: 20px;">
+                            <div style="color: #2c1810; margin-bottom: 8px;">{{ item.question }}</div>
                             <div style="color: #2c1810; font-weight: 600;">إجابتك: 
                                 <span :style="{ color: item.isCorrect ? '#2c5f2d' : '#9e2a2a' }">{{ item.userAnswer || 'لم تجب' }}</span>
                             </div>
@@ -669,34 +566,124 @@
 
     <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
     <script>
-        // جميع الأسئلة (نفس ما كانت - مختصرة للعرض)
+        // ==================== الوحدة الرابعة: الحياة السياسية في الأردن (20 سؤال) ====================
         const politicalQuestions = [
             { question: "جرى تأسيس أول حكومة أردنية في عهد الإمارة بتاريخ:", options: ["أ- 11 نيسان 1920م", "ب- 11 نيسان 1921م", "ج- 25 أيار 1923م", "د- 11 نيسان 1928م"], correct: "ب- 11 نيسان 1921م" },
             { question: "أول رئيس لأول حكومة أردنية عام 1921م هو:", options: ["أ- إبراهيم هاشم", "ب- حسين الطراونة", "ج- رشيد طليع", "د- مظهر رسلان"], correct: "ج- رشيد طليع" },
             { question: "تم توقيع الاتفاقية الأردنية - البريطانية في عام 1928م في مدينة:", options: ["أ- عمان", "ب- لندن", "ج- القدس", "د- القاهرة"], correct: "ج- القدس" },
             { question: "صدر القانون الأساسي (أول دستور في عهد الإمارة) في شهر نيسان من عام:", options: ["أ- 1921م", "ب- 1923م", "ج- 1928م", "د- 1929م"], correct: "ج- 1928م" },
-            { question: "جرت أول انتخابات تشريعية في تاريخ الأردن في عام:", options: ["أ- 1921م", "ب- 1928م", "ج- 1929م", "د- 1946م"], correct: "ج- 1929م" }
+            { question: "جرت أول انتخابات تشريعية في تاريخ الأردن في عام:", options: ["أ- 1921م", "ب- 1928م", "ج- 1929م", "د- 1946م"], correct: "ج- 1929م" },
+            { question: "التاريخ الذي نالت فيه المملكة الأردنية الهاشمية استقلالها التام هو:", options: ["أ- 25 أيار 1923م", "ب- 25 أيار 1946م", "ج- 11 نيسان 1921م", "د- 1 آذار 1956م"], correct: "ب- 25 أيار 1946م" },
+            { question: "تم إعلان قيام وحدة الضفتين رسمياً في عام:", options: ["أ- 1948م", "ب- 1949م", "ج- 1950م", "د- 1952م"], correct: "ج- 1950م" },
+            { question: "الملك الهاشمي الذي استُشهد في المسجد الأقصى عام 1951م هو:", options: ["أ- الشريف حسين بن علي", "ب- الملك عبد الله الأول", "ج- الملك طلال", "د- الملك حسين"], correct: "ب- الملك عبد الله الأول" },
+            { question: "صدر الدستور الأردني المعمول به حالياً (والذي نّظم العلاقة بين السلطات) في عهد:", options: ["أ- الملك عبد الله الأول", "ب- الملك طلال", "ج- الملك حسين", "د- الملك عبد الله الثاني"], correct: "ب- الملك طلال" },
+            { question: "التاريخ الذي أعلن فيه الملك حسين تعريب قيادة الجيش العربي هو:", options: ["أ- 1 آذار 1956م", "ب- 13 آذار 1957م", "ج- 21 آذار 1968م", "د- 2 أيار 1953م"], correct: "أ- 1 آذار 1956م" },
+            { question: "أول حكومة حزبية في الأردن عام 1956م كانت برئاسة:", options: ["أ- هزاع المجالي", "ب- وصفي التل", "ج- سليمان النابلسي", "د- إبراهيم هاشم"], correct: "ج- سليمان النابلسي" },
+            { question: "تم إلغاء المعاهدة الأردنية - البريطانية رسمياً في عام:", options: ["أ- 1946م", "ب- 1951م", "ج- 1956م", "د- 1957م"], correct: "د- 1957م" },
+            { question: "المعركة التي حّطم فيها الجيش العربي أسطورة 'الجيش الإسرائيلي الذي لا يقهر' عام 1968م هي:", options: ["أ- باب الواد", "ب- اللطرون", "ج- الكرامة", "د- معركة السموع"], correct: "ج- الكرامة" },
+            { question: "الحرب التي أدت إلى احتلال إسرائيل للضفة الغربية وقطاع غزة والجولان هي:", options: ["أ- حرب 1948م", "ب- حرب حزيران 1967م", "ج- حرب رمضان 1973م", "د- حرب الاستنزاف"], correct: "ب- حرب حزيران 1967م" },
+            { question: "تم تأسيس البنك المركزي الأردني ليبدأ بممارسة مهامه في عام:", options: ["أ- 1950م", "ب- 1952م", "ج- 1960م", "د- 1964م"], correct: "د- 1964م" },
+            { question: "التاريخ الذي توفي فيه الملك الحسين بن طلال وانتقل فيه الحكم للملك عبد الله الثاني هو:", options: ["أ- 7 شباط 1999م", "ب- 25 أيار 1999م", "ج- 2 آذار 1999م", "د- 10 حزيران 1999م"], correct: "أ- 7 شباط 1999م" },
+            { question: "اللون الذي يمثل راية الدولة الفاطمية وشعار آل البيت في العلم الأردني هو:", options: ["أ- الأسود", "ب- الأبيض", "ج- الأخضر", "د- الأحمر"], correct: "ج- الأخضر" },
+            { question: "تشّكل المجلس الوطني الاستشاري في عام 1978م كبديل مؤقت في ظل تجميد:", options: ["أ- مجلس الوزراء", "ب- مجلس النواب", "ج- الأحزاب السياسية", "د- المحاكم النظامية"], correct: "ب- مجلس النواب" },
+            { question: "تم إنشاء المحكمة الدستورية في عام 2011م، ومهمتها الأساسية هي:", options: ["أ- محاكمة الوزراء", "ب- تفسير نصوص الدستور", "ج- الإشراف على الانتخابات", "د- محاكمة المدنيين"], correct: "ب- تفسير نصوص الدستور" },
+            { question: "الجهة المستقلة التي تُعنى بإدارة الانتخابات النيابية والبلدية منذ عام 2012م هي:", options: ["أ- وزارة الداخلية", "ب- الهيئة المستقلة للانتخاب", "ج- ديوان المحاسبة", "د- مجلس المحافظة"], correct: "ب- الهيئة المستقلة للانتخاب" }
         ];
 
+        // ==================== الوحدة الخامسة: الحياة الاقتصادية في الأردن (20 سؤال) ====================
         const economicQuestions = [
             { question: "السمة البارزة والنشاط الاقتصادي الرئيسي للسكان في عهد الإمارة كان:", options: ["أ- التجارة", "ب- الصناعة", "ج- الزراعة", "د- الوظائف الحكومية"], correct: "ج- الزراعة" },
             { question: "بلغت نسبة الأراضي الصالحة للزراعة من مساحة البلاد الكلية في عهد الإمارة:", options: ["أ- 5%", "ب- 10%", "ج- 20%", "د- 30%"], correct: "ب- 10%" },
-            { question: "تم إنشاء أول مصرف زراعي في الأردن في عام:", options: ["أ- 1921م", "ب- 1922م", "ج- 1923م", "د- 1924م"], correct: "ب- 1922م" }
+            { question: "تم إنشاء أول مصرف زراعي في الأردن في عام:", options: ["أ- 1921م", "ب- 1922م", "ج- 1923م", "د- 1924م"], correct: "ب- 1922م" },
+            { question: "تم اكتشاف مادة الفوسفات لأول مرة في الأردن عام 1932م في منطقة:", options: ["أ- الحسا", "ب- الشيدية", "ج- الرصيفة", "د- الوادي الأبيض"], correct: "ج- الرصيفة" },
+            { question: "الموانئ التي كانت تمر عبرها الصادرات الأردنية قبل عام 1948م هي:", options: ["أ- العقبة وبيروت", "ب- حيفا ويافا", "ج- اللاذقية وبيروت", "د- غزة وبورسعيد"], correct: "ب- حيفا ويافا" },
+            { question: "أصبح الدينار الأردني هو وحدة النقد المتداولة رسمياً بدلاً من الجنيه الفلسطيني عام:", options: ["أ- 1948م", "ب- 1949م", "ج- 1950م", "د- 1952م"], correct: "ج- 1950م" },
+            { question: "المشروع الذي يُعد الشريان الحيوي الذي يزود المناطق الزراعية في الأغوار بالمياه هو:", options: ["أ- سد الملك طلال", "ب- سد الوحدة", "ج- قناة الغور الشرقية", "د- سد الوالة"], correct: "ج- قناة الغور الشرقية" },
+            { question: "تم افتتاح سد المخيبة (سد الوحدة) في عهد الملك الحسين بن طلال عام:", options: ["أ- 1960م", "ب- 1964م", "ج- 1966م", "د- 1970م"], correct: "ج- 1966م" },
+            { question: "تأسست شركة البوتاس العربية لاستغلال ثروات البحر الميت في عام:", options: ["أ- 1952م", "ب- 1956م", "ج- 1964م", "د- 1967م"], correct: "ب- 1956م" },
+            { question: "تأسست سلطة ميناء العقبة ليتولى الأردن إدارة تجارته الخارجية بنفسه عام:", options: ["أ- 1948م", "ب- 1950م", "ج- 1952م", "د- 1964م"], correct: "ج- 1952م" },
+            { question: "تم تأسيس بنك الإنماء الصناعي لتشجيع المشاريع الصناعية في عام:", options: ["أ- 1964م", "ب- 1967م", "ج- 1970م", "د- 1984م"], correct: "ب- 1967م" },
+            { question: "أول مدينة صناعية أُنشئت في الأردن (مدينة الملك عبد الله الثاني) تقع في:", options: ["أ- إربد", "ب- سحاب", "ج- الكرك", "د- العقبة"], correct: "ب- سحاب" },
+            { question: "صدر أول قانون لتشجيع الاستثمار في الأردن في عام:", options: ["أ- 1950م", "ب- 1955م", "ج- 1995م", "د- 2014م"], correct: "ب- 1955م" },
+            { question: "تم توقيع اتفاقية التجارة الحرة مع الولايات المتحدة الأمريكية في عام:", options: ["أ- 1999م", "ب- 2000م", "ج- 2001م", "د- 2003م"], correct: "ج- 2001م" },
+            { question: "استضاف الأردن المنتدى الاقتصادي العالمي (دافوس) لأول مرة في البحر الميت عام:", options: ["أ- 2001م", "ب- 2002م", "ج- 2003م", "د- 2005م"], correct: "ج- 2003م" },
+            { question: "تقع مدينة الحسين بن عبد الله الثاني الصناعية التي افتتحت عام 2000م في محافظة:", options: ["أ- المفرق", "ب- إربد", "ج- الكرك", "د- مادبا"], correct: "ج- الكرك" },
+            { question: "المؤسسة التي تأسست عام 2014م بهدف توحيد التشريعات الخاصة بالاستثمار هي:", options: ["أ- مؤسسة المدن الصناعية", "ب- هيئة الاستثمار الأردنية", "ج- غرفة صناعة الأردن", "د- مؤسسة المناطق الحرة"], correct: "ب- هيئة الاستثمار الأردنية" },
+            { question: "من العقبات التي واجهت قطاع الصناعة في عهد الإمارة (1921-1950م):", options: ["أ- توفر النقد الأردني", "ب- ضخامة رأس المال", "ج- صغر السوق المحلي", "د- كثرة عدد السكان"], correct: "ج- صغر السوق المحلي" },
+            { question: "تأسست غرفة صناعة الأردن لتمثيل مصالح الغرف الصناعية في عام:", options: ["أ- 2000م", "ب- 2003م", "ج- 2005م", "د- 2010م"], correct: "ج- 2005م" },
+            { question: "أي من السدود الآتية لم يُذكر ضمن مشاريع الفترة (1951-1999م) في الوحدة:", options: ["أ- سد الملك طلال", "ب- سد الوالة", "ج- سد الموجب", "د- سد الكفرين"], correct: "د- سد الكفرين" }
         ];
 
+        // ==================== الوحدة السادسة: الحياة الاجتماعية في الأردن (20 سؤال) ====================
         const socialQuestions = [
             { question: "النشاط الاقتصادي الرئيسي لسكان القرى في عهد الإمارة كان:", options: ["أ- التجارة", "ب- الزراعة والرعي", "ج- الصناعة المنزلية", "د- الوظائف الحكومية"], correct: "ب- الزراعة والرعي" },
-            { question: "تأسست أول جمعية خيرية في الأردن باسم 'جمعية النهضة الأرثوذكسية' عام:", options: ["أ- 1912م", "ب- 1921م", "ج- 1925م", "د- 1936م"], correct: "ج- 1925م" }
+            { question: "تأسست أول جمعية خيرية في الأردن باسم 'جمعية النهضة الأرثوذكسية' عام:", options: ["أ- 1912م", "ب- 1921م", "ج- 1925م", "د- 1936م"], correct: "ج- 1925م" },
+            { question: "أول جمعية نسائية تأسست عام 1926م (جمعية التضامن النسائي) كانت برئاسة:", options: ["أ- الأميرة هيا", "ب- الملكة زين الشرف", "ج- الملكة مصباح", "د- الملكة رانيا"], correct: "ج- الملكة مصباح" },
+            { question: "تم افتتاح أول صيدلية في مدينة عمان في عام:", options: ["أ- 1921م", "ب- 1923م", "ج- 1925م", "د- 1930م"], correct: "ج- 1925م" },
+            { question: "أُنشئت أول وزارة للصحة في المملكة الأردنية الهاشمية في عام:", options: ["أ- 1946م", "ب- 1948م", "ج- 1950م", "د- 1952م"], correct: "ج- 1950م" },
+            { question: "تأسست مؤسسة رعاية الشباب التابعة لرئاسة الوزراء للاهتمام بفئة الشباب عام:", options: ["أ- 1960م", "ب- 1964م", "ج- 1966م", "د- 1970م"], correct: "ج- 1966م" },
+            { question: "تم افتتاح مدينة الحسين الطبية (الصرح الطبي الكبير) في عام:", options: ["أ- 1967م", "ب- 1970م", "ج- 1973م", "د- 1978م"], correct: "ج- 1973م" },
+            { question: "المؤسسة التي تُعنى بتوفير الحماية الاجتماعية من مخاطر الشيخوخة والعجز وتأسست عام 1978م هي:", options: ["أ- وزارة التنمية الاجتماعية", "ب- مؤسسة الضمان الاجتماعي", "ج- صندوق المعونة الوطنية", "د- الهيئة الخيرية الهاشمية"], correct: "ب- مؤسسة الضمان الاجتماعي" },
+            { question: "تم البدء بتطبيق نظام التأمين الصحي في الأردن كخطوة أولى للتأمين الشامل عام:", options: ["أ- 1980م", "ب- 1983م", "ج- 1985م", "د- 1990م"], correct: "ب- 1983م" },
+            { question: "تأسست اللجنة الوطنية الأردنية لشؤون المرأة بهدف النهوض بأوضاعها عام:", options: ["أ- 1989م", "ب- 1990م", "ج- 1992م", "د- 1995م"], correct: "ج- 1992م" },
+            { question: "استُحدث المجلس الأعلى للشباب ليتولى رعاية الشؤون الشبابية في عام:", options: ["أ- 1999م", "ب- 2000م", "ج- 2001م", "د- 2005م"], correct: "ج- 2001م" },
+            { question: "أطلق الملك عبد الله الثاني جائزة خاصة بالطلبة لرفع مستوى لياقتهم الصحية عام 2005م هي:", options: ["أ- جائزة الإنجاز الشبابي", "ب- جائزة الملك عبد الله الثاني للياقة البدنية", "ج- جائزة المبدع الصغير", "د- جائزة التميز الرياضي"], correct: "ب- جائزة الملك عبد الله الثاني للياقة البدنية" },
+            { question: "تأسس المجلس الأعلى للأشخاص ذوي الإعاقة كجهة رسمية معنية برسم السياسات عام:", options: ["أ- 2005م", "ب- 2006م", "ج- 2007م", "د- 2010م"], correct: "ج- 2007م" },
+            { question: "تأسست مؤسسة ولي العهد بمبادرة وطنية تستهدف الشباب الأردني في عام:", options: ["أ- 2012م", "ب- 2014م", "ج- 2015م", "د- 2018م"], correct: "ج- 2015م" },
+            { question: "المحافظة التي تعتبر الأكثر سكاناً في المملكة حسب الإحصائيات هي:", options: ["أ- إربد", "ب- الزرقاء", "ج- العاصمة عمان", "د- المفرق"], correct: "ج- العاصمة عمان" },
+            { question: "الصندوق الذي يقدم المعونات المالية الشهرية للأسر العفيفة في الأردن هو:", options: ["أ- صندوق التنمية والتشغيل", "ب- صندوق الملك عبد الله الثاني للتنمية", "ج- صندوق المعونة الوطنية", "د- الصندوق الهاشمي لتنمية البادية"], correct: "ج- صندوق المعونة الوطنية" },
+            { question: "نمط الأسرة الذي أصبح شائعاً في المجتمع الأردني بسبب الهجرة والتعليم هو:", options: ["أ- الأسرة الممتدة", "ب- الأسرة النواة", "ج- الأسرة القبلية", "د- الأسرة الريفية"], correct: "ب- الأسرة النواة" },
+            { question: "جرى استئصال مرض الملاريا نهائياً من الأردن بحلول عام:", options: ["أ- 1950م", "ب- 1960م", "ج- 1970م", "د- 1980م"], correct: "ج- 1970م" },
+            { question: "من الآثار السلبية للزيادة السكانية الكبيرة في المدن الأردنية:", options: ["أ- انخفاض الأسعار", "ب- زيادة فرص السكن الفخم", "ج- الازدحامات المرورية", "د- قلة الطلب على الغذاء"], correct: "ج- الازدحامات المرورية" },
+            { question: "وكالة الأمم المتحدة التي تولت إغاثة وتشغيل اللاجئين الفلسطينيين (الأونروا) تأسست بعد حرب:", options: ["أ- 1948م", "ب- 1967م", "ج- 1973م", "د- 1982م"], correct: "أ- 1948م" }
         ];
 
+        // ==================== الوحدة السابعة: التعليم والثقافة في الأردن (20 سؤال) ====================
         const educationQuestions = [
             { question: "احتُفل بوضع حجر الأساس لمدرسة السلط الثانوية في عام:", options: ["أ- 1921م", "ب- 1923م", "ج- 1924م", "د- 1926م"], correct: "ب- 1923م" },
-            { question: "أول مدرسة صناعية أُسست في عهد الإمارة هي مدرسة الصنائع والفنون في:", options: ["أ- السلط", "ب- إربد", "ج- عمان", "د- الكرك"], correct: "ج- عمان" }
+            { question: "أول مدرسة صناعية أُسست في عهد الإمارة هي مدرسة الصنائع والفنون في:", options: ["أ- السلط", "ب- إربد", "ج- عمان", "د- الكرك"], correct: "ج- عمان" },
+            { question: "التاريخ الذي صدر فيه 'نظام المعارف' كأهم حدث تعليمي في عهد الإمارة هو:", options: ["أ- 1935م", "ب- 1937م", "ج- 1939م", "د- 1940م"], correct: "ج- 1939م" },
+            { question: "أُنشئت أول وزارة للمعارف (التربية والتعليم لاحقاً) في عام:", options: ["أ- 1939م", "ب- 1940م", "ج- 1946م", "د- 1952م"], correct: "ب- 1940م" },
+            { question: "أُنشئت دار المعلمين في عمان لتأهيل المعلمين في عام:", options: ["أ- 1950م", "ب- 1951م", "ج- 1952م", "د- 1962م"], correct: "ج- 1952م" },
+            { question: "أول جامعة حكومية تأسست في المملكة الأردنية الهاشمية هي:", options: ["أ- جامعة اليرموك", "ب- جامعة مؤتة", "ج- الجامعة الأردنية", "د- جامعة العلوم والتكنولوجيا"], correct: "ج- الجامعة الأردنية" },
+            { question: "تم افتتاح التلفزيون الأردني وبدأ بثه باللونين الأبيض والأسود عام:", options: ["أ- 1964م", "ب- 1966م", "ج- 1968م", "د- 1970م"], correct: "ج- 1968م" },
+            { question: "تأسست جامعة اليرموك في مدينة إربد في عام:", options: ["أ- 1962م", "ب- 1970م", "ج- 1976م", "د- 1981م"], correct: "ج- 1976م" },
+            { question: "تأسس مجمع اللغة العربية الأردني للحفاظ على سلامة اللغة العربية عام:", options: ["أ- 1974م", "ب- 1975م", "ج- 1976م", "د- 1980م"], correct: "ج- 1976م" },
+            { question: "أُنشئت مؤسسة آل البيت للفكر الإسلامي في عهد الملك الحسين بن طلال عام:", options: ["أ- 1978م", "ب- 1980م", "ج- 1982م", "د- 1985م"], correct: "ب- 1980م" },
+            { question: "عُقد المؤتمر الوطني الأول للتطوير التربوي الذي أعاد تنظيم السلم التعليمي عام:", options: ["أ- 1984م", "ب- 1985م", "ج- 1986م", "د- 1987م"], correct: "د- 1987م" },
+            { question: "مدارس الملك عبد الله الثاني للتميز التي أُسست للطلبة المبدعين بدأت في عام:", options: ["أ- 1999م", "ب- 2000م", "ج- 2001م", "د- 2005م"], correct: "ج- 2001م" },
+            { question: "أُنشئت مديرية التربية والتعليم والثقافة العسكرية لتطوير مدارس الجيش في عام:", options: ["أ- 1970م", "ب- 1975م", "ج- 1981م", "د- 1990م"], correct: "ج- 1981م" },
+            { question: "الصحيفة التي أصدرها الأمير عبد الله في معان عام 1920م هي:", options: ["أ- الشرق العربي", "ب- الحق يعلو", "ج- الرائد", "د- الميثاق"], correct: "ب- الحق يعلو" },
+            { question: "الصحيفة الرسمية للحكومة التي تأسست عام 1923م وتغير اسمها للجريدة الرسمية هي:", options: ["أ- الحق يعلو", "ب- الشرق العربي", "ج- جزيرة العرب", "د- الأردن"], correct: "ب- الشرق العربي" },
+            { question: "الشاعر الأردني الملقب بـ 'عرار' وصاحب ديوان (عشيات وادي اليابس) هو:", options: ["أ- حسني فريز", "ب- محمد الشريقي", "ج- مصطفى وهبي التل", "د- عبد الحليم عباس"], correct: "ج- مصطفى وهبي التل" },
+            { question: "تم اختيار مدينة عمان 'عاصمة للثقافة العربية' في عام:", options: ["أ- 2000م", "ب- 2001م", "ج- 2002م", "د- 2005م"], correct: "ج- 2002م" },
+            { question: "يقع متحف 'صرح الشهيد' في مدينة:", options: ["أ- إربد", "ب- السلط", "ج- عمان", "د- الكرك"], correct: "ج- عمان" },
+            { question: "انخفضت نسبة الأمية في الأردن عام 2023م لتصل إلى:", options: ["أ- 10%", "ب- 7%", "ج- 4.9%", "د- 2.5%"], correct: "ج- 4.9%" },
+            { question: "أُنشئ المركز الوطني لتطوير المناهج بهدف الإصلاح التربوي في عام:", options: ["أ- 2010م", "ب- 2015م", "ج- 2017م", "د- 2020م"], correct: "ج- 2017م" }
         ];
 
+        // ==================== الوحدة الثامنة: الأردن والقضية الفلسطينية (20 سؤال) ====================
         const palestineQuestions = [
             { question: "عُقد المؤتمر الصهيوني الأول الذي قّرر إقامة وطن قومي لليهود في عام:", options: ["أ- 1897م", "ب- 1916م", "ج- 1917م", "د- 1920م"], correct: "أ- 1897م" },
-            { question: "صدر وعد بلفور البريطاني الذي تعهد بإنشاء وطن لليهود في فلسطين بتاريخ:", options: ["أ- 2 تشرين أول 1917م", "ب- 2 تشرين ثاني 1917م", "ج- 15 أيار 1948م", "د- 29 تشرين ثاني 1947م"], correct: "ب- 2 تشرين ثاني 1917م" }
+            { question: "صدر وعد بلفور البريطاني الذي تعهد بإنشاء وطن لليهود في فلسطين بتاريخ:", options: ["أ- 2 تشرين أول 1917م", "ب- 2 تشرين ثاني 1917م", "ج- 15 أيار 1948م", "د- 29 تشرين ثاني 1947م"], correct: "ب- 2 تشرين ثاني 1917م" },
+            { question: "أول شهيد أردني على أرض فلسطين (في معركة قرية قم) هو الشيخ:", options: ["أ- فراس العجلوني", "ب- كايد المفلح العبيدات", "ج- منصور كريشان", "د- صبحي العش"], correct: "ب- كايد المفلح العبيدات" },
+            { question: "التاريخ الذي انعقدت فيه البيعة بالخالفة والوصاية للشريف حسين من أهل فلسطين هو:", options: ["أ- 1920م", "ب- 1922م", "ج- 1924م", "د- 1931م"], correct: "ج- 1924م" },
+            { question: "اندلعت الثورة الفلسطينية الكبرى ضد الانتداب البريطاني والصهيونية في عام:", options: ["أ- 1920م", "ب- 1929م", "ج- 1936م", "د- 1947م"], correct: "ج- 1936م" },
+            { question: "صدر قرار تقسيم فلسطين رقم (181) عن الجمعية العامة للأمم المتحدة عام:", options: ["أ- 1947م", "ب- 1948م", "ج- 1967م", "د- 1973م"], correct: "أ- 1947م" },
+            { question: "وقع حريق المسجد الأقصى الأليم من قبل متطرف يهودي بتاريخ:", options: ["أ- 21 آب 1967م", "ب- 21 آب 1968م", "ج- 21 آب 1969م", "د- 21 آب 1970م"], correct: "ج- 21 آب 1969م" },
+            { question: "اندلعت الانتفاضة الفلسطينية الأولى (انتفاضة الحجارة) في عام:", options: ["أ- 1982م", "ب- 1985م", "ج- 1987م", "د- 1993م"], correct: "ج- 1987م" },
+            { question: "جرى توقيع اتفاق 'أوسلو' بين منظمة التحرير الفلسطينية وإسرائيل عام:", options: ["أ- 1991م", "ب- 1992م", "ج- 1993م", "د- 1994م"], correct: "ج- 1993م" },
+            { question: "اندلعت الانتفاضة الفلسطينية الثانية (انتفاضة الأقصى) بعد اقتحام شارون للأقصى عام:", options: ["أ- 2000م", "ب- 2001م", "ج- 2003م", "د- 2006م"], correct: "أ- 2000م" },
+            { question: "بدأت إسرائيل ببناء الجدار العازل في الضفة الغربية لضم أراضٍ فلسطينية عام:", options: ["أ- 2000م", "ب- 2001م", "ج- 2003م", "د- 2005م"], correct: "ج- 2003م" },
+            { question: "أُعيد تركيب منبر المسجد الأقصى (منبر صالح الدين) بعد إعادة صنعه عام:", options: ["أ- 2005م", "ب- 2006م", "ج- 2007م", "د- 2010م"], correct: "ج- 2007م" },
+            { question: "تم توقيع اتفاقية الوصاية الهاشمية بين الملك عبد الله الثاني والرئيس عباس عام:", options: ["أ- 2010م", "ب- 2012م", "ج- 2013م", "د- 2015م"], correct: "ج- 2013م" },
+            { question: "القرار الدولي الذي نّص على انسحاب إسرائيل من الأراضي المحتلة عام 1967م هو:", options: ["أ- القرار 181", "ب- القرار 194", "ج- القرار 242", "د- القرار 338"], correct: "ج- القرار 242" },
+            { question: "جرى 'الإعمار الهاشمي الطارئ' للمسجد الأقصى بعد الحريق في عام:", options: ["أ- 1969م", "ب- 1973م", "ج- 1992م", "د- 1994م"], correct: "أ- 1969م" },
+            { question: "الملك الهاشمي الذي جرى في عهده ترميم وصيانة قبة السلسلة هو:", options: ["أ- الملك عبد الله الأول", "ب- الملك طلال", "ج- الملك الحسين بن طلال", "د- الملك عبد الله الثاني"], correct: "ج- الملك الحسين بن طلال" },
+            { question: "نّفذ الأردن عمليات إنزال جوي لكسر الحصار وإغاثة قطاع غزة في عام:", options: ["أ- 2021م", "ب- 2022م", "ج- 2023م", "د- 2024م"], correct: "ج- 2023م" },
+            { question: "أي إعمار شمل تبديل قبة مسجد قبة الصخرة بقبة من الألمنيوم المذهب:", options: ["أ- الأول", "ب- الثاني", "ج- الثالث", "د- الرابع"], correct: "ب- الثاني" },
+            { question: "تأسس الصندوق الهاشمي لإعمار المسجد الأقصى لضمان استمرارية الرعاية عام:", options: ["أ- 1994م", "ب- 2000م", "ج- 2005م", "د- 2007م"], correct: "د- 2007م" },
+            { question: "أُطلق مشروع ترميم 'القبر المقدس' في كنيسة القيامة في عهد:", options: ["أ- الملك طلال", "ب- الملك الحسين", "ج- الملك عبد الله الثاني", "د- الملك عبد الله الأول"], correct: "ج- الملك عبد الله الثاني" }
         ];
 
         new Vue({
@@ -757,7 +744,7 @@
                         ...palestineQuestions
                     ];
                     
-                    this.currentQuestions = this.shuffleArray([...allQuestions]).slice(0, 5); // جعلتها 5 للاختبار السريع
+                    this.currentQuestions = this.shuffleArray([...allQuestions]).slice(0, 50);
                     this.resetQuiz();
                     this.currentScreen = 'quiz';
                 },
@@ -777,11 +764,8 @@
                 },
                 
                 selectAnswer(option) {
-                    // تسجيل الإجابة
-                    const wasAnswered = this.selectedOptions[this.currentIndex] !== null;
-                    
                     // إذا كان هناك إجابة سابقة، نعدل النتيجة
-                    if (wasAnswered) {
+                    if (this.selectedOptions[this.currentIndex] !== null) {
                         const oldAnswer = this.selectedOptions[this.currentIndex];
                         if (oldAnswer === this.currentQuestion.correct) {
                             this.score--;
@@ -801,7 +785,6 @@
                         if (this.currentIndex < this.totalQuestions - 1) {
                             this.currentIndex++;
                         } else {
-                            // إذا كان آخر سؤال، نذهب للنتيجة
                             this.currentScreen = 'result';
                         }
                     }, 200);
