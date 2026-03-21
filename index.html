@@ -20,22 +20,7 @@
             align-items: center;
             padding: 20px;
             position: relative;
-            background-image: 
-                linear-gradient(rgba(44, 24, 16, 0.9), rgba(44, 24, 16, 0.9)),
-                url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" opacity="0.1"><path d="M20 20 L80 20 L80 80 L20 80 Z" fill="none" stroke="%23c9a959" stroke-width="1"/><path d="M30 30 L70 30 L70 70 L30 70 Z" fill="none" stroke="%23c9a959" stroke-width="1"/><path d="M40 40 L60 40 L60 60 L40 60 Z" fill="none" stroke="%23c9a959" stroke-width="1"/><circle cx="50" cy="50" r="5" fill="%23c9a959"/></svg>');
-            background-size: 50px 50px;
-        }
-
-        body::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: radial-gradient(circle at 20% 50%, rgba(201, 169, 89, 0.1) 0%, transparent 50%),
-                        radial-gradient(circle at 80% 80%, rgba(201, 169, 89, 0.1) 0%, transparent 50%);
-            pointer-events: none;
+            background-image: linear-gradient(rgba(44, 24, 16, 0.9), rgba(44, 24, 16, 0.9));
         }
 
         .container {
@@ -72,7 +57,6 @@
             color: #c9a959;
             font-size: 30px;
             padding: 0 30px;
-            text-shadow: 0 0 10px #c9a959;
         }
 
         h1 {
@@ -81,9 +65,7 @@
             font-size: 3.2em;
             margin-bottom: 20px;
             font-weight: 700;
-            position: relative;
-            font-family: 'Amiri', 'Traditional Arabic', serif;
-            text-shadow: 2px 2px 4px rgba(201, 169, 89, 0.3);
+            font-family: 'Amiri', serif;
         }
 
         h1::before {
@@ -91,7 +73,6 @@
             font-size: 1.5em;
             color: #c9a959;
             margin-left: 15px;
-            font-weight: normal;
         }
 
         h1::after {
@@ -99,7 +80,6 @@
             font-size: 1.5em;
             color: #c9a959;
             margin-right: 15px;
-            font-weight: normal;
         }
 
         h2 {
@@ -110,14 +90,6 @@
             font-family: 'Amiri', serif;
             border-bottom: 2px dashed #c9a959;
             padding-bottom: 15px;
-            position: relative;
-        }
-
-        h2::before, h2::after {
-            content: '❈';
-            color: #c9a959;
-            font-size: 1.2em;
-            margin: 0 15px;
         }
 
         .main-menu {
@@ -125,7 +97,6 @@
             grid-template-columns: repeat(2, 1fr);
             gap: 25px;
             margin: 40px 0;
-            position: relative;
         }
 
         .menu-btn {
@@ -139,26 +110,9 @@
             cursor: pointer;
             transition: all 0.4s ease;
             text-align: center;
-            box-shadow: 0 15px 30px rgba(44, 24, 16, 0.3);
+            font-family: 'Amiri', serif;
             position: relative;
             overflow: hidden;
-            font-family: 'Amiri', serif;
-        }
-
-        .menu-btn::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: linear-gradient(135deg, transparent 0%, rgba(201, 169, 89, 0.2) 50%, transparent 100%);
-            transform: translateX(-100%);
-            transition: transform 0.6s ease;
-        }
-
-        .menu-btn:hover::before {
-            transform: translateX(100%);
         }
 
         .menu-btn:hover {
@@ -179,6 +133,20 @@
         .menu-btn.special:hover {
             background: #c9a959;
             color: #2c1810;
+        }
+
+        .loading {
+            text-align: center;
+            padding: 50px;
+            font-size: 1.5em;
+            color: #2c1810;
+        }
+
+        .error {
+            text-align: center;
+            padding: 50px;
+            font-size: 1.5em;
+            color: #9e2a2a;
         }
 
         .unit-header {
@@ -452,111 +420,127 @@
 </head>
 <body>
     <div class="container" id="app">
-        <!-- الصفحة الرئيسية -->
-        <div v-if="currentScreen === 'main'">
-            <h1>قسم التاريخ الأردني</h1>
-            <h2>اختر الاختبار الذي تريد</h2>
-            
-            <div class="main-menu">
-                <button class="menu-btn" @click="startUnitTest('الحياة السياسية', 4)">
-                    🏛️ الحياة السياسية في الأردن
-                </button>
-                <button class="menu-btn" @click="startUnitTest('الحياة الاقتصادية', 5)">
-                    💼 الحياة الاقتصادية في الأردن
-                </button>
-                <button class="menu-btn" @click="startUnitTest('الحياة الاجتماعية', 6)">
-                    👥 الحياة الاجتماعية في الأردن
-                </button>
-                <button class="menu-btn" @click="startUnitTest('التعليم والثقافة', 7)">
-                    📖 التعليم والثقافة في الأردن
-                </button>
-                <button class="menu-btn" @click="startUnitTest('الأردن والقضية الفلسطينية', 8)">
-                    🇵🇸 الأردن والقضية الفلسطينية
-                </button>
-                <button class="menu-btn special" @click="startComprehensiveExam()">
-                    📜 الامتحان الشامل (50 سؤال)
-                </button>
-            </div>
-            <div class="footer-note">
-                كل وحدة تحتوي على 20 سؤالاً | الشامل 50 سؤالاً عشوائياً من جميع الوحدات
-            </div>
+        <!-- شاشة التحميل -->
+        <div v-if="loading" class="loading">
+            <div style="font-size: 2em;">⏳</div>
+            <div>جاري تحميل الأسئلة...</div>
         </div>
 
-        <!-- شاشة الاختبار -->
-        <div v-if="currentScreen === 'quiz'">
-            <div class="unit-header">
-                <button class="back-btn" @click="backToMain">🔙 الرجوع</button>
-                <span class="unit-title">{{ unitName }}</span>
-                <span style="width: 100px;"></span>
-            </div>
+        <!-- شاشة الخطأ -->
+        <div v-else-if="error" class="error">
+            <div style="font-size: 2em;">⚠️</div>
+            <div>{{ error }}</div>
+            <button class="back-btn" @click="loadQuestions" style="margin-top: 20px;">إعادة المحاولة</button>
+        </div>
 
-            <div class="quiz-container">
-                <div class="question-header">
-                    <span class="question-number">سؤال {{ currentIndex + 1 }} / {{ totalQuestions }}</span>
-                    <div class="progress-bar">
-                        <div class="progress-fill" :style="{ width: ((currentIndex + 1) / totalQuestions * 100) + '%' }"></div>
-                    </div>
-                </div>
-
-                <div class="question-text">
-                    {{ currentQuestion.question }}
-                </div>
-
-                <div class="options-grid">
-                    <button 
-                        v-for="(option, idx) in currentQuestion.options" 
-                        :key="idx"
-                        class="option-btn"
-                        :class="{ 'selected': selectedOptions[currentIndex] === option }"
-                        @click="selectAnswer(option)"
-                    >
-                        {{ option }}
+        <!-- المحتوى الرئيسي -->
+        <div v-else>
+            <!-- الصفحة الرئيسية -->
+            <div v-if="currentScreen === 'main'">
+                <h1>قسم التاريخ الأردني</h1>
+                <h2>اختر الاختبار الذي تريد</h2>
+                
+                <div class="main-menu">
+                    <button class="menu-btn" @click="startUnitTest('الحياة السياسية', 'political')">
+                        🏛️ الحياة السياسية في الأردن
+                    </button>
+                    <button class="menu-btn" @click="startUnitTest('الحياة الاقتصادية', 'economic')">
+                        💼 الحياة الاقتصادية في الأردن
+                    </button>
+                    <button class="menu-btn" @click="startUnitTest('الحياة الاجتماعية', 'social')">
+                        👥 الحياة الاجتماعية في الأردن
+                    </button>
+                    <button class="menu-btn" @click="startUnitTest('التعليم والثقافة', 'education')">
+                        📖 التعليم والثقافة في الأردن
+                    </button>
+                    <button class="menu-btn" @click="startUnitTest('الأردن والقضية الفلسطينية', 'palestine')">
+                        🇵🇸 الأردن والقضية الفلسطينية
+                    </button>
+                    <button class="menu-btn special" @click="startComprehensiveExam()">
+                        📜 الامتحان الشامل (50 سؤال)
                     </button>
                 </div>
-
-                <div class="nav-buttons">
-                    <button class="nav-btn" @click="previousQuestion" :disabled="currentIndex === 0">السابق</button>
+                <div class="footer-note">
+                    كل وحدة تحتوي على 20 سؤالاً | الشامل 50 سؤالاً عشوائياً من جميع الوحدات
                 </div>
             </div>
-        </div>
 
-        <!-- شاشة النتيجة -->
-        <div v-if="currentScreen === 'result'">
-            <div class="unit-header">
-                <button class="back-btn" @click="backToMain">🔙 الرجوع</button>
-                <span class="unit-title">النتيجة النهائية</span>
-                <span style="width: 100px;"></span>
+            <!-- شاشة الاختبار -->
+            <div v-if="currentScreen === 'quiz'">
+                <div class="unit-header">
+                    <button class="back-btn" @click="backToMain">🔙 الرجوع</button>
+                    <span class="unit-title">{{ unitName }}</span>
+                    <span style="width: 100px;"></span>
+                </div>
+
+                <div class="quiz-container">
+                    <div class="question-header">
+                        <span class="question-number">سؤال {{ currentIndex + 1 }} / {{ totalQuestions }}</span>
+                        <div class="progress-bar">
+                            <div class="progress-fill" :style="{ width: ((currentIndex + 1) / totalQuestions * 100) + '%' }"></div>
+                        </div>
+                    </div>
+
+                    <div class="question-text">
+                        {{ currentQuestion.question }}
+                    </div>
+
+                    <div class="options-grid">
+                        <button 
+                            v-for="(option, idx) in currentQuestion.options" 
+                            :key="idx"
+                            class="option-btn"
+                            :class="{ 'selected': selectedOptions[currentIndex] === option }"
+                            @click="selectAnswer(option)"
+                        >
+                            {{ option }}
+                        </button>
+                    </div>
+
+                    <div class="nav-buttons">
+                        <button class="nav-btn" @click="previousQuestion" :disabled="currentIndex === 0">السابق</button>
+                    </div>
+                </div>
             </div>
-            
-            <div class="result-card">
-                <h1 style="border-bottom: none; margin-bottom: 20px;">نتيجة الاختبار</h1>
-                
-                <div class="result-score">
-                    {{ score }} / {{ totalQuestions }}
-                </div>
-                
-                <div class="result-message">
-                    {{ getResultMessage }}
-                </div>
-                
-                <div style="font-size: 1.5em; color: #2c1810; margin: 20px 0;">
-                    نسبة الإجابة الصحيحة: {{ ((score / totalQuestions) * 100).toFixed(1) }}%
-                </div>
 
-                <button class="back-btn" @click="backToMain" style="margin: 20px auto;">امتحان جديد</button>
+            <!-- شاشة النتيجة -->
+            <div v-if="currentScreen === 'result'">
+                <div class="unit-header">
+                    <button class="back-btn" @click="backToMain">🔙 الرجوع</button>
+                    <span class="unit-title">النتيجة النهائية</span>
+                    <span style="width: 100px;"></span>
+                </div>
+                
+                <div class="result-card">
+                    <h1 style="border-bottom: none; margin-bottom: 20px;">نتيجة الاختبار</h1>
+                    
+                    <div class="result-score">
+                        {{ score }} / {{ totalQuestions }}
+                    </div>
+                    
+                    <div class="result-message">
+                        {{ getResultMessage }}
+                    </div>
+                    
+                    <div style="font-size: 1.5em; color: #2c1810; margin: 20px 0;">
+                        نسبة الإجابة الصحيحة: {{ ((score / totalQuestions) * 100).toFixed(1) }}%
+                    </div>
 
-                <div class="answers-review">
-                    <h3 style="margin-bottom: 25px; color: #2c1810; font-size: 1.6em; text-align: center;">✧ مراجعة الإجابات ✧</h3>
-                    <div v-for="(item, index) in reviewAnswers" :key="index" 
-                         class="answer-item" 
-                         :class="{ 'correct-user': item.isCorrect, 'wrong-user': !item.isCorrect }">
-                        <strong style="color: #c9a959; font-size: 1.2em;">س{{ index + 1 }}:</strong>
-                        <div style="margin-top: 12px; padding-right: 20px;">
-                            <div style="color: #2c1810; margin-bottom: 8px;">{{ item.question }}</div>
-                            <div style="color: #2c1810; font-weight: 600;">إجابتك: 
-                                <span :style="{ color: item.isCorrect ? '#2c5f2d' : '#9e2a2a' }">{{ item.userAnswer || 'لم تجب' }}</span>
+                    <button class="back-btn" @click="backToMain" style="margin: 20px auto;">امتحان جديد</button>
+
+                    <div class="answers-review">
+                        <h3 style="margin-bottom: 25px; color: #2c1810; font-size: 1.6em; text-align: center;">✧ مراجعة الإجابات ✧</h3>
+                        <div v-for="(item, index) in reviewAnswers" :key="index" 
+                             class="answer-item" 
+                             :class="{ 'correct-user': item.isCorrect, 'wrong-user': !item.isCorrect }">
+                            <strong style="color: #c9a959; font-size: 1.2em;">س{{ index + 1 }}:</strong>
+                            <div style="margin-top: 12px; padding-right: 20px;">
+                                <div style="color: #2c1810; margin-bottom: 8px;">{{ item.question }}</div>
+                                <div style="color: #2c1810; font-weight: 600;">إجابتك: 
+                                    <span :style="{ color: item.isCorrect ? '#2c5f2d' : '#9e2a2a' }">{{ item.userAnswer || 'لم تجب' }}</span>
+                                </div>
+                                <div style="color: #2c5f2d; font-weight: 600;">الإجابة الصحيحة: {{ item.correctAnswer }}</div>
                             </div>
-                            <div style="color: #2c5f2d; font-weight: 600;">الإجابة الصحيحة: {{ item.correctAnswer }}</div>
                         </div>
                     </div>
                 </div>
@@ -566,129 +550,18 @@
 
     <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
     <script>
-        // ==================== الوحدة الرابعة: الحياة السياسية في الأردن (20 سؤال) ====================
-        const politicalQuestions = [
-            { question: "جرى تأسيس أول حكومة أردنية في عهد الإمارة بتاريخ:", options: ["أ- 11 نيسان 1920م", "ب- 11 نيسان 1921م", "ج- 25 أيار 1923م", "د- 11 نيسان 1928م"], correct: "ب- 11 نيسان 1921م" },
-            { question: "أول رئيس لأول حكومة أردنية عام 1921م هو:", options: ["أ- إبراهيم هاشم", "ب- حسين الطراونة", "ج- رشيد طليع", "د- مظهر رسلان"], correct: "ج- رشيد طليع" },
-            { question: "تم توقيع الاتفاقية الأردنية - البريطانية في عام 1928م في مدينة:", options: ["أ- عمان", "ب- لندن", "ج- القدس", "د- القاهرة"], correct: "ج- القدس" },
-            { question: "صدر القانون الأساسي (أول دستور في عهد الإمارة) في شهر نيسان من عام:", options: ["أ- 1921م", "ب- 1923م", "ج- 1928م", "د- 1929م"], correct: "ج- 1928م" },
-            { question: "جرت أول انتخابات تشريعية في تاريخ الأردن في عام:", options: ["أ- 1921م", "ب- 1928م", "ج- 1929م", "د- 1946م"], correct: "ج- 1929م" },
-            { question: "التاريخ الذي نالت فيه المملكة الأردنية الهاشمية استقلالها التام هو:", options: ["أ- 25 أيار 1923م", "ب- 25 أيار 1946م", "ج- 11 نيسان 1921م", "د- 1 آذار 1956م"], correct: "ب- 25 أيار 1946م" },
-            { question: "تم إعلان قيام وحدة الضفتين رسمياً في عام:", options: ["أ- 1948م", "ب- 1949م", "ج- 1950م", "د- 1952م"], correct: "ج- 1950م" },
-            { question: "الملك الهاشمي الذي استُشهد في المسجد الأقصى عام 1951م هو:", options: ["أ- الشريف حسين بن علي", "ب- الملك عبد الله الأول", "ج- الملك طلال", "د- الملك حسين"], correct: "ب- الملك عبد الله الأول" },
-            { question: "صدر الدستور الأردني المعمول به حالياً (والذي نّظم العلاقة بين السلطات) في عهد:", options: ["أ- الملك عبد الله الأول", "ب- الملك طلال", "ج- الملك حسين", "د- الملك عبد الله الثاني"], correct: "ب- الملك طلال" },
-            { question: "التاريخ الذي أعلن فيه الملك حسين تعريب قيادة الجيش العربي هو:", options: ["أ- 1 آذار 1956م", "ب- 13 آذار 1957م", "ج- 21 آذار 1968م", "د- 2 أيار 1953م"], correct: "أ- 1 آذار 1956م" },
-            { question: "أول حكومة حزبية في الأردن عام 1956م كانت برئاسة:", options: ["أ- هزاع المجالي", "ب- وصفي التل", "ج- سليمان النابلسي", "د- إبراهيم هاشم"], correct: "ج- سليمان النابلسي" },
-            { question: "تم إلغاء المعاهدة الأردنية - البريطانية رسمياً في عام:", options: ["أ- 1946م", "ب- 1951م", "ج- 1956م", "د- 1957م"], correct: "د- 1957م" },
-            { question: "المعركة التي حّطم فيها الجيش العربي أسطورة 'الجيش الإسرائيلي الذي لا يقهر' عام 1968م هي:", options: ["أ- باب الواد", "ب- اللطرون", "ج- الكرامة", "د- معركة السموع"], correct: "ج- الكرامة" },
-            { question: "الحرب التي أدت إلى احتلال إسرائيل للضفة الغربية وقطاع غزة والجولان هي:", options: ["أ- حرب 1948م", "ب- حرب حزيران 1967م", "ج- حرب رمضان 1973م", "د- حرب الاستنزاف"], correct: "ب- حرب حزيران 1967م" },
-            { question: "تم تأسيس البنك المركزي الأردني ليبدأ بممارسة مهامه في عام:", options: ["أ- 1950م", "ب- 1952م", "ج- 1960م", "د- 1964م"], correct: "د- 1964م" },
-            { question: "التاريخ الذي توفي فيه الملك الحسين بن طلال وانتقل فيه الحكم للملك عبد الله الثاني هو:", options: ["أ- 7 شباط 1999م", "ب- 25 أيار 1999م", "ج- 2 آذار 1999م", "د- 10 حزيران 1999م"], correct: "أ- 7 شباط 1999م" },
-            { question: "اللون الذي يمثل راية الدولة الفاطمية وشعار آل البيت في العلم الأردني هو:", options: ["أ- الأسود", "ب- الأبيض", "ج- الأخضر", "د- الأحمر"], correct: "ج- الأخضر" },
-            { question: "تشّكل المجلس الوطني الاستشاري في عام 1978م كبديل مؤقت في ظل تجميد:", options: ["أ- مجلس الوزراء", "ب- مجلس النواب", "ج- الأحزاب السياسية", "د- المحاكم النظامية"], correct: "ب- مجلس النواب" },
-            { question: "تم إنشاء المحكمة الدستورية في عام 2011م، ومهمتها الأساسية هي:", options: ["أ- محاكمة الوزراء", "ب- تفسير نصوص الدستور", "ج- الإشراف على الانتخابات", "د- محاكمة المدنيين"], correct: "ب- تفسير نصوص الدستور" },
-            { question: "الجهة المستقلة التي تُعنى بإدارة الانتخابات النيابية والبلدية منذ عام 2012م هي:", options: ["أ- وزارة الداخلية", "ب- الهيئة المستقلة للانتخاب", "ج- ديوان المحاسبة", "د- مجلس المحافظة"], correct: "ب- الهيئة المستقلة للانتخاب" }
-        ];
-
-        // ==================== الوحدة الخامسة: الحياة الاقتصادية في الأردن (20 سؤال) ====================
-        const economicQuestions = [
-            { question: "السمة البارزة والنشاط الاقتصادي الرئيسي للسكان في عهد الإمارة كان:", options: ["أ- التجارة", "ب- الصناعة", "ج- الزراعة", "د- الوظائف الحكومية"], correct: "ج- الزراعة" },
-            { question: "بلغت نسبة الأراضي الصالحة للزراعة من مساحة البلاد الكلية في عهد الإمارة:", options: ["أ- 5%", "ب- 10%", "ج- 20%", "د- 30%"], correct: "ب- 10%" },
-            { question: "تم إنشاء أول مصرف زراعي في الأردن في عام:", options: ["أ- 1921م", "ب- 1922م", "ج- 1923م", "د- 1924م"], correct: "ب- 1922م" },
-            { question: "تم اكتشاف مادة الفوسفات لأول مرة في الأردن عام 1932م في منطقة:", options: ["أ- الحسا", "ب- الشيدية", "ج- الرصيفة", "د- الوادي الأبيض"], correct: "ج- الرصيفة" },
-            { question: "الموانئ التي كانت تمر عبرها الصادرات الأردنية قبل عام 1948م هي:", options: ["أ- العقبة وبيروت", "ب- حيفا ويافا", "ج- اللاذقية وبيروت", "د- غزة وبورسعيد"], correct: "ب- حيفا ويافا" },
-            { question: "أصبح الدينار الأردني هو وحدة النقد المتداولة رسمياً بدلاً من الجنيه الفلسطيني عام:", options: ["أ- 1948م", "ب- 1949م", "ج- 1950م", "د- 1952م"], correct: "ج- 1950م" },
-            { question: "المشروع الذي يُعد الشريان الحيوي الذي يزود المناطق الزراعية في الأغوار بالمياه هو:", options: ["أ- سد الملك طلال", "ب- سد الوحدة", "ج- قناة الغور الشرقية", "د- سد الوالة"], correct: "ج- قناة الغور الشرقية" },
-            { question: "تم افتتاح سد المخيبة (سد الوحدة) في عهد الملك الحسين بن طلال عام:", options: ["أ- 1960م", "ب- 1964م", "ج- 1966م", "د- 1970م"], correct: "ج- 1966م" },
-            { question: "تأسست شركة البوتاس العربية لاستغلال ثروات البحر الميت في عام:", options: ["أ- 1952م", "ب- 1956م", "ج- 1964م", "د- 1967م"], correct: "ب- 1956م" },
-            { question: "تأسست سلطة ميناء العقبة ليتولى الأردن إدارة تجارته الخارجية بنفسه عام:", options: ["أ- 1948م", "ب- 1950م", "ج- 1952م", "د- 1964م"], correct: "ج- 1952م" },
-            { question: "تم تأسيس بنك الإنماء الصناعي لتشجيع المشاريع الصناعية في عام:", options: ["أ- 1964م", "ب- 1967م", "ج- 1970م", "د- 1984م"], correct: "ب- 1967م" },
-            { question: "أول مدينة صناعية أُنشئت في الأردن (مدينة الملك عبد الله الثاني) تقع في:", options: ["أ- إربد", "ب- سحاب", "ج- الكرك", "د- العقبة"], correct: "ب- سحاب" },
-            { question: "صدر أول قانون لتشجيع الاستثمار في الأردن في عام:", options: ["أ- 1950م", "ب- 1955م", "ج- 1995م", "د- 2014م"], correct: "ب- 1955م" },
-            { question: "تم توقيع اتفاقية التجارة الحرة مع الولايات المتحدة الأمريكية في عام:", options: ["أ- 1999م", "ب- 2000م", "ج- 2001م", "د- 2003م"], correct: "ج- 2001م" },
-            { question: "استضاف الأردن المنتدى الاقتصادي العالمي (دافوس) لأول مرة في البحر الميت عام:", options: ["أ- 2001م", "ب- 2002م", "ج- 2003م", "د- 2005م"], correct: "ج- 2003م" },
-            { question: "تقع مدينة الحسين بن عبد الله الثاني الصناعية التي افتتحت عام 2000م في محافظة:", options: ["أ- المفرق", "ب- إربد", "ج- الكرك", "د- مادبا"], correct: "ج- الكرك" },
-            { question: "المؤسسة التي تأسست عام 2014م بهدف توحيد التشريعات الخاصة بالاستثمار هي:", options: ["أ- مؤسسة المدن الصناعية", "ب- هيئة الاستثمار الأردنية", "ج- غرفة صناعة الأردن", "د- مؤسسة المناطق الحرة"], correct: "ب- هيئة الاستثمار الأردنية" },
-            { question: "من العقبات التي واجهت قطاع الصناعة في عهد الإمارة (1921-1950م):", options: ["أ- توفر النقد الأردني", "ب- ضخامة رأس المال", "ج- صغر السوق المحلي", "د- كثرة عدد السكان"], correct: "ج- صغر السوق المحلي" },
-            { question: "تأسست غرفة صناعة الأردن لتمثيل مصالح الغرف الصناعية في عام:", options: ["أ- 2000م", "ب- 2003م", "ج- 2005م", "د- 2010م"], correct: "ج- 2005م" },
-            { question: "أي من السدود الآتية لم يُذكر ضمن مشاريع الفترة (1951-1999م) في الوحدة:", options: ["أ- سد الملك طلال", "ب- سد الوالة", "ج- سد الموجب", "د- سد الكفرين"], correct: "د- سد الكفرين" }
-        ];
-
-        // ==================== الوحدة السادسة: الحياة الاجتماعية في الأردن (20 سؤال) ====================
-        const socialQuestions = [
-            { question: "النشاط الاقتصادي الرئيسي لسكان القرى في عهد الإمارة كان:", options: ["أ- التجارة", "ب- الزراعة والرعي", "ج- الصناعة المنزلية", "د- الوظائف الحكومية"], correct: "ب- الزراعة والرعي" },
-            { question: "تأسست أول جمعية خيرية في الأردن باسم 'جمعية النهضة الأرثوذكسية' عام:", options: ["أ- 1912م", "ب- 1921م", "ج- 1925م", "د- 1936م"], correct: "ج- 1925م" },
-            { question: "أول جمعية نسائية تأسست عام 1926م (جمعية التضامن النسائي) كانت برئاسة:", options: ["أ- الأميرة هيا", "ب- الملكة زين الشرف", "ج- الملكة مصباح", "د- الملكة رانيا"], correct: "ج- الملكة مصباح" },
-            { question: "تم افتتاح أول صيدلية في مدينة عمان في عام:", options: ["أ- 1921م", "ب- 1923م", "ج- 1925م", "د- 1930م"], correct: "ج- 1925م" },
-            { question: "أُنشئت أول وزارة للصحة في المملكة الأردنية الهاشمية في عام:", options: ["أ- 1946م", "ب- 1948م", "ج- 1950م", "د- 1952م"], correct: "ج- 1950م" },
-            { question: "تأسست مؤسسة رعاية الشباب التابعة لرئاسة الوزراء للاهتمام بفئة الشباب عام:", options: ["أ- 1960م", "ب- 1964م", "ج- 1966م", "د- 1970م"], correct: "ج- 1966م" },
-            { question: "تم افتتاح مدينة الحسين الطبية (الصرح الطبي الكبير) في عام:", options: ["أ- 1967م", "ب- 1970م", "ج- 1973م", "د- 1978م"], correct: "ج- 1973م" },
-            { question: "المؤسسة التي تُعنى بتوفير الحماية الاجتماعية من مخاطر الشيخوخة والعجز وتأسست عام 1978م هي:", options: ["أ- وزارة التنمية الاجتماعية", "ب- مؤسسة الضمان الاجتماعي", "ج- صندوق المعونة الوطنية", "د- الهيئة الخيرية الهاشمية"], correct: "ب- مؤسسة الضمان الاجتماعي" },
-            { question: "تم البدء بتطبيق نظام التأمين الصحي في الأردن كخطوة أولى للتأمين الشامل عام:", options: ["أ- 1980م", "ب- 1983م", "ج- 1985م", "د- 1990م"], correct: "ب- 1983م" },
-            { question: "تأسست اللجنة الوطنية الأردنية لشؤون المرأة بهدف النهوض بأوضاعها عام:", options: ["أ- 1989م", "ب- 1990م", "ج- 1992م", "د- 1995م"], correct: "ج- 1992م" },
-            { question: "استُحدث المجلس الأعلى للشباب ليتولى رعاية الشؤون الشبابية في عام:", options: ["أ- 1999م", "ب- 2000م", "ج- 2001م", "د- 2005م"], correct: "ج- 2001م" },
-            { question: "أطلق الملك عبد الله الثاني جائزة خاصة بالطلبة لرفع مستوى لياقتهم الصحية عام 2005م هي:", options: ["أ- جائزة الإنجاز الشبابي", "ب- جائزة الملك عبد الله الثاني للياقة البدنية", "ج- جائزة المبدع الصغير", "د- جائزة التميز الرياضي"], correct: "ب- جائزة الملك عبد الله الثاني للياقة البدنية" },
-            { question: "تأسس المجلس الأعلى للأشخاص ذوي الإعاقة كجهة رسمية معنية برسم السياسات عام:", options: ["أ- 2005م", "ب- 2006م", "ج- 2007م", "د- 2010م"], correct: "ج- 2007م" },
-            { question: "تأسست مؤسسة ولي العهد بمبادرة وطنية تستهدف الشباب الأردني في عام:", options: ["أ- 2012م", "ب- 2014م", "ج- 2015م", "د- 2018م"], correct: "ج- 2015م" },
-            { question: "المحافظة التي تعتبر الأكثر سكاناً في المملكة حسب الإحصائيات هي:", options: ["أ- إربد", "ب- الزرقاء", "ج- العاصمة عمان", "د- المفرق"], correct: "ج- العاصمة عمان" },
-            { question: "الصندوق الذي يقدم المعونات المالية الشهرية للأسر العفيفة في الأردن هو:", options: ["أ- صندوق التنمية والتشغيل", "ب- صندوق الملك عبد الله الثاني للتنمية", "ج- صندوق المعونة الوطنية", "د- الصندوق الهاشمي لتنمية البادية"], correct: "ج- صندوق المعونة الوطنية" },
-            { question: "نمط الأسرة الذي أصبح شائعاً في المجتمع الأردني بسبب الهجرة والتعليم هو:", options: ["أ- الأسرة الممتدة", "ب- الأسرة النواة", "ج- الأسرة القبلية", "د- الأسرة الريفية"], correct: "ب- الأسرة النواة" },
-            { question: "جرى استئصال مرض الملاريا نهائياً من الأردن بحلول عام:", options: ["أ- 1950م", "ب- 1960م", "ج- 1970م", "د- 1980م"], correct: "ج- 1970م" },
-            { question: "من الآثار السلبية للزيادة السكانية الكبيرة في المدن الأردنية:", options: ["أ- انخفاض الأسعار", "ب- زيادة فرص السكن الفخم", "ج- الازدحامات المرورية", "د- قلة الطلب على الغذاء"], correct: "ج- الازدحامات المرورية" },
-            { question: "وكالة الأمم المتحدة التي تولت إغاثة وتشغيل اللاجئين الفلسطينيين (الأونروا) تأسست بعد حرب:", options: ["أ- 1948م", "ب- 1967م", "ج- 1973م", "د- 1982م"], correct: "أ- 1948م" }
-        ];
-
-        // ==================== الوحدة السابعة: التعليم والثقافة في الأردن (20 سؤال) ====================
-        const educationQuestions = [
-            { question: "احتُفل بوضع حجر الأساس لمدرسة السلط الثانوية في عام:", options: ["أ- 1921م", "ب- 1923م", "ج- 1924م", "د- 1926م"], correct: "ب- 1923م" },
-            { question: "أول مدرسة صناعية أُسست في عهد الإمارة هي مدرسة الصنائع والفنون في:", options: ["أ- السلط", "ب- إربد", "ج- عمان", "د- الكرك"], correct: "ج- عمان" },
-            { question: "التاريخ الذي صدر فيه 'نظام المعارف' كأهم حدث تعليمي في عهد الإمارة هو:", options: ["أ- 1935م", "ب- 1937م", "ج- 1939م", "د- 1940م"], correct: "ج- 1939م" },
-            { question: "أُنشئت أول وزارة للمعارف (التربية والتعليم لاحقاً) في عام:", options: ["أ- 1939م", "ب- 1940م", "ج- 1946م", "د- 1952م"], correct: "ب- 1940م" },
-            { question: "أُنشئت دار المعلمين في عمان لتأهيل المعلمين في عام:", options: ["أ- 1950م", "ب- 1951م", "ج- 1952م", "د- 1962م"], correct: "ج- 1952م" },
-            { question: "أول جامعة حكومية تأسست في المملكة الأردنية الهاشمية هي:", options: ["أ- جامعة اليرموك", "ب- جامعة مؤتة", "ج- الجامعة الأردنية", "د- جامعة العلوم والتكنولوجيا"], correct: "ج- الجامعة الأردنية" },
-            { question: "تم افتتاح التلفزيون الأردني وبدأ بثه باللونين الأبيض والأسود عام:", options: ["أ- 1964م", "ب- 1966م", "ج- 1968م", "د- 1970م"], correct: "ج- 1968م" },
-            { question: "تأسست جامعة اليرموك في مدينة إربد في عام:", options: ["أ- 1962م", "ب- 1970م", "ج- 1976م", "د- 1981م"], correct: "ج- 1976م" },
-            { question: "تأسس مجمع اللغة العربية الأردني للحفاظ على سلامة اللغة العربية عام:", options: ["أ- 1974م", "ب- 1975م", "ج- 1976م", "د- 1980م"], correct: "ج- 1976م" },
-            { question: "أُنشئت مؤسسة آل البيت للفكر الإسلامي في عهد الملك الحسين بن طلال عام:", options: ["أ- 1978م", "ب- 1980م", "ج- 1982م", "د- 1985م"], correct: "ب- 1980م" },
-            { question: "عُقد المؤتمر الوطني الأول للتطوير التربوي الذي أعاد تنظيم السلم التعليمي عام:", options: ["أ- 1984م", "ب- 1985م", "ج- 1986م", "د- 1987م"], correct: "د- 1987م" },
-            { question: "مدارس الملك عبد الله الثاني للتميز التي أُسست للطلبة المبدعين بدأت في عام:", options: ["أ- 1999م", "ب- 2000م", "ج- 2001م", "د- 2005م"], correct: "ج- 2001م" },
-            { question: "أُنشئت مديرية التربية والتعليم والثقافة العسكرية لتطوير مدارس الجيش في عام:", options: ["أ- 1970م", "ب- 1975م", "ج- 1981م", "د- 1990م"], correct: "ج- 1981م" },
-            { question: "الصحيفة التي أصدرها الأمير عبد الله في معان عام 1920م هي:", options: ["أ- الشرق العربي", "ب- الحق يعلو", "ج- الرائد", "د- الميثاق"], correct: "ب- الحق يعلو" },
-            { question: "الصحيفة الرسمية للحكومة التي تأسست عام 1923م وتغير اسمها للجريدة الرسمية هي:", options: ["أ- الحق يعلو", "ب- الشرق العربي", "ج- جزيرة العرب", "د- الأردن"], correct: "ب- الشرق العربي" },
-            { question: "الشاعر الأردني الملقب بـ 'عرار' وصاحب ديوان (عشيات وادي اليابس) هو:", options: ["أ- حسني فريز", "ب- محمد الشريقي", "ج- مصطفى وهبي التل", "د- عبد الحليم عباس"], correct: "ج- مصطفى وهبي التل" },
-            { question: "تم اختيار مدينة عمان 'عاصمة للثقافة العربية' في عام:", options: ["أ- 2000م", "ب- 2001م", "ج- 2002م", "د- 2005م"], correct: "ج- 2002م" },
-            { question: "يقع متحف 'صرح الشهيد' في مدينة:", options: ["أ- إربد", "ب- السلط", "ج- عمان", "د- الكرك"], correct: "ج- عمان" },
-            { question: "انخفضت نسبة الأمية في الأردن عام 2023م لتصل إلى:", options: ["أ- 10%", "ب- 7%", "ج- 4.9%", "د- 2.5%"], correct: "ج- 4.9%" },
-            { question: "أُنشئ المركز الوطني لتطوير المناهج بهدف الإصلاح التربوي في عام:", options: ["أ- 2010م", "ب- 2015م", "ج- 2017م", "د- 2020م"], correct: "ج- 2017م" }
-        ];
-
-        // ==================== الوحدة الثامنة: الأردن والقضية الفلسطينية (20 سؤال) ====================
-        const palestineQuestions = [
-            { question: "عُقد المؤتمر الصهيوني الأول الذي قّرر إقامة وطن قومي لليهود في عام:", options: ["أ- 1897م", "ب- 1916م", "ج- 1917م", "د- 1920م"], correct: "أ- 1897م" },
-            { question: "صدر وعد بلفور البريطاني الذي تعهد بإنشاء وطن لليهود في فلسطين بتاريخ:", options: ["أ- 2 تشرين أول 1917م", "ب- 2 تشرين ثاني 1917م", "ج- 15 أيار 1948م", "د- 29 تشرين ثاني 1947م"], correct: "ب- 2 تشرين ثاني 1917م" },
-            { question: "أول شهيد أردني على أرض فلسطين (في معركة قرية قم) هو الشيخ:", options: ["أ- فراس العجلوني", "ب- كايد المفلح العبيدات", "ج- منصور كريشان", "د- صبحي العش"], correct: "ب- كايد المفلح العبيدات" },
-            { question: "التاريخ الذي انعقدت فيه البيعة بالخالفة والوصاية للشريف حسين من أهل فلسطين هو:", options: ["أ- 1920م", "ب- 1922م", "ج- 1924م", "د- 1931م"], correct: "ج- 1924م" },
-            { question: "اندلعت الثورة الفلسطينية الكبرى ضد الانتداب البريطاني والصهيونية في عام:", options: ["أ- 1920م", "ب- 1929م", "ج- 1936م", "د- 1947م"], correct: "ج- 1936م" },
-            { question: "صدر قرار تقسيم فلسطين رقم (181) عن الجمعية العامة للأمم المتحدة عام:", options: ["أ- 1947م", "ب- 1948م", "ج- 1967م", "د- 1973م"], correct: "أ- 1947م" },
-            { question: "وقع حريق المسجد الأقصى الأليم من قبل متطرف يهودي بتاريخ:", options: ["أ- 21 آب 1967م", "ب- 21 آب 1968م", "ج- 21 آب 1969م", "د- 21 آب 1970م"], correct: "ج- 21 آب 1969م" },
-            { question: "اندلعت الانتفاضة الفلسطينية الأولى (انتفاضة الحجارة) في عام:", options: ["أ- 1982م", "ب- 1985م", "ج- 1987م", "د- 1993م"], correct: "ج- 1987م" },
-            { question: "جرى توقيع اتفاق 'أوسلو' بين منظمة التحرير الفلسطينية وإسرائيل عام:", options: ["أ- 1991م", "ب- 1992م", "ج- 1993م", "د- 1994م"], correct: "ج- 1993م" },
-            { question: "اندلعت الانتفاضة الفلسطينية الثانية (انتفاضة الأقصى) بعد اقتحام شارون للأقصى عام:", options: ["أ- 2000م", "ب- 2001م", "ج- 2003م", "د- 2006م"], correct: "أ- 2000م" },
-            { question: "بدأت إسرائيل ببناء الجدار العازل في الضفة الغربية لضم أراضٍ فلسطينية عام:", options: ["أ- 2000م", "ب- 2001م", "ج- 2003م", "د- 2005م"], correct: "ج- 2003م" },
-            { question: "أُعيد تركيب منبر المسجد الأقصى (منبر صالح الدين) بعد إعادة صنعه عام:", options: ["أ- 2005م", "ب- 2006م", "ج- 2007م", "د- 2010م"], correct: "ج- 2007م" },
-            { question: "تم توقيع اتفاقية الوصاية الهاشمية بين الملك عبد الله الثاني والرئيس عباس عام:", options: ["أ- 2010م", "ب- 2012م", "ج- 2013م", "د- 2015م"], correct: "ج- 2013م" },
-            { question: "القرار الدولي الذي نّص على انسحاب إسرائيل من الأراضي المحتلة عام 1967م هو:", options: ["أ- القرار 181", "ب- القرار 194", "ج- القرار 242", "د- القرار 338"], correct: "ج- القرار 242" },
-            { question: "جرى 'الإعمار الهاشمي الطارئ' للمسجد الأقصى بعد الحريق في عام:", options: ["أ- 1969م", "ب- 1973م", "ج- 1992م", "د- 1994م"], correct: "أ- 1969م" },
-            { question: "الملك الهاشمي الذي جرى في عهده ترميم وصيانة قبة السلسلة هو:", options: ["أ- الملك عبد الله الأول", "ب- الملك طلال", "ج- الملك الحسين بن طلال", "د- الملك عبد الله الثاني"], correct: "ج- الملك الحسين بن طلال" },
-            { question: "نّفذ الأردن عمليات إنزال جوي لكسر الحصار وإغاثة قطاع غزة في عام:", options: ["أ- 2021م", "ب- 2022م", "ج- 2023م", "د- 2024م"], correct: "ج- 2023م" },
-            { question: "أي إعمار شمل تبديل قبة مسجد قبة الصخرة بقبة من الألمنيوم المذهب:", options: ["أ- الأول", "ب- الثاني", "ج- الثالث", "د- الرابع"], correct: "ب- الثاني" },
-            { question: "تأسس الصندوق الهاشمي لإعمار المسجد الأقصى لضمان استمرارية الرعاية عام:", options: ["أ- 1994م", "ب- 2000م", "ج- 2005م", "د- 2007م"], correct: "د- 2007م" },
-            { question: "أُطلق مشروع ترميم 'القبر المقدس' في كنيسة القيامة في عهد:", options: ["أ- الملك طلال", "ب- الملك الحسين", "ج- الملك عبد الله الثاني", "د- الملك عبد الله الأول"], correct: "ج- الملك عبد الله الثاني" }
-        ];
-
         new Vue({
             el: '#app',
             data: {
+                loading: true,
+                error: null,
+                allQuestions: {
+                    political: [],
+                    economic: [],
+                    social: [],
+                    education: [],
+                    palestine: []
+                },
                 currentScreen: 'main',
                 unitName: '',
                 currentQuestions: [],
@@ -719,16 +592,35 @@
                     return 'حاول مرة أخرى، فالتاريخ ينتظرك';
                 }
             },
+            mounted() {
+                this.loadQuestions();
+            },
             methods: {
-                startUnitTest(name, unitNumber) {
+                loadQuestions() {
+                    this.loading = true;
+                    this.error = null;
+                    
+                    fetch('questions.json')
+                        .then(response => {
+                            if (!response.ok) {
+                                throw new Error('فشل تحميل الأسئلة');
+                            }
+                            return response.json();
+                        })
+                        .then(data => {
+                            this.allQuestions = data;
+                            this.loading = false;
+                        })
+                        .catch(err => {
+                            this.error = 'حدث خطأ في تحميل الأسئلة. تأكد من وجود ملف questions.json في نفس المجلد.';
+                            this.loading = false;
+                            console.error(err);
+                        });
+                },
+                
+                startUnitTest(name, unitKey) {
                     this.unitName = name;
-                    
-                    if (unitNumber === 4) this.currentQuestions = [...politicalQuestions];
-                    else if (unitNumber === 5) this.currentQuestions = [...economicQuestions];
-                    else if (unitNumber === 6) this.currentQuestions = [...socialQuestions];
-                    else if (unitNumber === 7) this.currentQuestions = [...educationQuestions];
-                    else if (unitNumber === 8) this.currentQuestions = [...palestineQuestions];
-                    
+                    this.currentQuestions = [...this.allQuestions[unitKey]];
                     this.resetQuiz();
                     this.currentScreen = 'quiz';
                 },
@@ -737,11 +629,11 @@
                     this.unitName = 'الامتحان الشامل';
                     
                     const allQuestions = [
-                        ...politicalQuestions,
-                        ...economicQuestions,
-                        ...socialQuestions,
-                        ...educationQuestions,
-                        ...palestineQuestions
+                        ...this.allQuestions.political,
+                        ...this.allQuestions.economic,
+                        ...this.allQuestions.social,
+                        ...this.allQuestions.education,
+                        ...this.allQuestions.palestine
                     ];
                     
                     this.currentQuestions = this.shuffleArray([...allQuestions]).slice(0, 50);
@@ -764,7 +656,6 @@
                 },
                 
                 selectAnswer(option) {
-                    // إذا كان هناك إجابة سابقة، نعدل النتيجة
                     if (this.selectedOptions[this.currentIndex] !== null) {
                         const oldAnswer = this.selectedOptions[this.currentIndex];
                         if (oldAnswer === this.currentQuestion.correct) {
@@ -772,15 +663,12 @@
                         }
                     }
                     
-                    // تسجيل الإجابة الجديدة
                     this.$set(this.selectedOptions, this.currentIndex, option);
                     
-                    // تحديث النتيجة
                     if (option === this.currentQuestion.correct) {
                         this.score++;
                     }
                     
-                    // الانتقال للسؤال التالي تلقائياً
                     setTimeout(() => {
                         if (this.currentIndex < this.totalQuestions - 1) {
                             this.currentIndex++;
