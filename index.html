@@ -4,693 +4,352 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>قسم التاريخ - الأردن</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Amiri', 'Traditional Arabic', 'Scheherazade', 'Segoe UI', Tahoma, sans-serif;
-        }
-
-        body {
-            background: #2c1810;
-            min-height: 100vh;
-            display: flex;
+    <link rel="stylesheet" href="style.css" id="mainStyle">
+    <style id="antiTheftStyle">
+        /* حماية ضد السرقة - تظهر رسالة الاستهزاء إذا الملفات ناقصة */
+        .anti-theft-message {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #000000 0%, #1a0000 50%, #000000 100%);
+            z-index: 9999;
             justify-content: center;
             align-items: center;
-            padding: 20px;
-            position: relative;
-            background-image: linear-gradient(rgba(44, 24, 16, 0.9), rgba(44, 24, 16, 0.9));
-        }
-
-        .container {
-            max-width: 1100px;
-            width: 100%;
-            background: #fdf3e0;
-            border-radius: 30px;
-            box-shadow: 0 30px 80px rgba(0, 0, 0, 0.5), 0 0 0 2px #c9a959, 0 0 0 5px #8b6b4d;
-            overflow: hidden;
-            padding: 40px;
-            position: relative;
-        }
-
-        .container::before {
-            content: '';
-            position: absolute;
-            top: 10px;
-            left: 10px;
-            right: 10px;
-            bottom: 10px;
-            border: 2px solid #c9a959;
-            border-radius: 20px;
-            pointer-events: none;
-            opacity: 0.3;
-        }
-
-        .container::after {
-            content: '✦';
-            position: absolute;
-            top: -15px;
-            left: 50%;
-            transform: translateX(-50%);
-            background: #2c1810;
-            color: #c9a959;
-            font-size: 30px;
-            padding: 0 30px;
-        }
-
-        h1 {
             text-align: center;
-            color: #2c1810;
-            font-size: 3.2em;
-            margin-bottom: 20px;
-            font-weight: 700;
-            font-family: 'Amiri', serif;
-        }
-
-        h1::before {
-            content: '﴿';
-            font-size: 1.5em;
-            color: #c9a959;
-            margin-left: 15px;
-        }
-
-        h1::after {
-            content: '﴾';
-            font-size: 1.5em;
-            color: #c9a959;
-            margin-right: 15px;
-        }
-
-        h2 {
-            color: #5a3e2b;
-            font-size: 2em;
-            margin: 20px 0 30px;
-            text-align: center;
-            font-family: 'Amiri', serif;
-            border-bottom: 2px dashed #c9a959;
-            padding-bottom: 15px;
-        }
-
-        .main-menu {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 25px;
-            margin: 40px 0;
-        }
-
-        .menu-btn {
-            background: #fff5e6;
-            border: 3px solid #8b6b4d;
-            color: #2c1810;
-            padding: 35px 20px;
-            font-size: 1.4em;
-            font-weight: 600;
-            border-radius: 60px;
-            cursor: pointer;
-            transition: all 0.4s ease;
-            text-align: center;
-            font-family: 'Amiri', serif;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .menu-btn:hover {
-            background: #2c1810;
-            color: #c9a959;
-            transform: translateY(-8px);
-            border-color: #c9a959;
-        }
-
-        .menu-btn.special {
-            background: #8b6b4d;
-            color: #fdf3e0;
-            border-color: #c9a959;
-            font-size: 1.6em;
-            grid-column: span 2;
-        }
-
-        .menu-btn.special:hover {
-            background: #c9a959;
-            color: #2c1810;
-        }
-
-        .loading {
-            text-align: center;
-            padding: 50px;
-            font-size: 1.5em;
-            color: #2c1810;
-        }
-
-        .error {
-            text-align: center;
-            padding: 50px;
-            font-size: 1.5em;
-            color: #9e2a2a;
-        }
-
-        .unit-header {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            margin-bottom: 30px;
-            background: #fff5e6;
-            padding: 20px 30px;
-            border-radius: 80px;
-            box-shadow: 0 10px 20px rgba(44, 24, 16, 0.2);
-            border: 2px solid #8b6b4d;
-        }
-
-        .unit-title {
-            font-size: 2em;
-            color: #2c1810;
-            font-weight: 700;
-            font-family: 'Amiri', serif;
-        }
-
-        .back-btn {
-            background: #2c1810;
-            color: #c9a959;
-            border: none;
-            padding: 15px 35px;
-            border-radius: 60px;
-            font-size: 1.2em;
-            font-weight: 600;
-            cursor: pointer;
-            border: 2px solid #c9a959;
-            font-family: 'Amiri', serif;
-            transition: all 0.3s ease;
-        }
-
-        .back-btn:hover {
-            background: #c9a959;
-            color: #2c1810;
-            border-color: #2c1810;
-        }
-
-        .quiz-container {
-            background: #fff5e6;
-            border-radius: 50px;
-            padding: 40px;
-            margin: 20px 0;
-            box-shadow: 0 20px 40px rgba(44, 24, 16, 0.3);
-            border: 3px solid #8b6b4d;
-            position: relative;
-        }
-
-        .quiz-container::before {
-            content: '❦';
-            position: absolute;
-            top: -20px;
-            left: 50%;
-            transform: translateX(-50%);
-            background: #fdf3e0;
-            color: #c9a959;
-            font-size: 30px;
-            padding: 0 30px;
-        }
-
-        .question-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 30px;
-            background: #2c1810;
-            padding: 15px 25px;
-            border-radius: 80px;
-            border: 2px solid #c9a959;
-        }
-
-        .question-number {
-            background: #c9a959;
-            color: #2c1810;
-            padding: 12px 35px;
-            border-radius: 60px;
-            font-size: 1.3em;
-            font-weight: 700;
-            font-family: 'Amiri', serif;
-        }
-
-        .progress-bar {
-            flex: 1;
-            height: 15px;
-            background: #5a3e2b;
-            border-radius: 20px;
-            overflow: hidden;
-            min-width: 200px;
-        }
-
-        .progress-fill {
-            height: 100%;
-            background: linear-gradient(90deg, #c9a959, #f3d9a4);
-            width: 0%;
-            transition: width 0.4s ease;
-        }
-
-        .question-text {
-            font-size: 1.5em;
-            color: #2c1810;
-            margin: 30px 0 35px;
-            padding: 30px;
-            background: #fdf3e0;
-            border-radius: 40px;
-            line-height: 1.8;
-            border-right: 8px solid #c9a959;
-            font-family: 'Amiri', serif;
-        }
-
-        .options-grid {
-            display: flex;
             flex-direction: column;
-            gap: 18px;
-            margin: 30px 0;
+            font-family: 'Courier New', monospace;
+            animation: bgPulse 2s ease-in-out infinite;
         }
-
-        .option-btn {
-            background: #fdf3e0;
-            border: 3px solid #8b6b4d;
-            padding: 20px 35px;
-            border-radius: 100px;
-            font-size: 1.25em;
-            text-align: right;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            color: #2c1810;
-            font-weight: 600;
-            font-family: 'Amiri', serif;
+        
+        @keyframes bgPulse {
+            0%, 100% { background: linear-gradient(135deg, #000000, #1a0000, #000000); }
+            50% { background: linear-gradient(135deg, #1a0000, #2a0000, #1a0000); }
         }
-
-        .option-btn:hover {
-            background: #2c1810;
-            color: #c9a959;
-            border-color: #c9a959;
-            transform: translateX(-5px);
+        
+        .anti-theft-message .troll-container {
+            background: rgba(0, 0, 0, 0.9);
+            padding: 60px 80px;
+            border-radius: 70px;
+            border: 4px solid;
+            border-image: linear-gradient(45deg, #ff0000, #ff6600, #ff0000) 1;
+            animation: borderGlow 0.8s ease-in-out infinite;
+            box-shadow: 0 0 80px rgba(255, 0, 0, 0.5);
+            transform: scale(1);
+            animation: containerPulse 0.5s ease-in-out infinite;
         }
-
-        .option-btn.selected {
-            background: #c9a959;
-            color: #2c1810;
-            border-color: #2c1810;
+        
+        @keyframes borderGlow {
+            0%, 100% { border-color: #ff0000; box-shadow: 0 0 60px rgba(255, 0, 0, 0.5); }
+            50% { border-color: #ff6600; box-shadow: 0 0 100px rgba(255, 102, 0, 0.8); }
         }
-
-        .nav-buttons {
-            display: flex;
-            justify-content: flex-start;
-            margin-top: 40px;
+        
+        @keyframes containerPulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.02); }
         }
-
-        .nav-btn {
-            padding: 18px 50px;
-            border: none;
-            border-radius: 60px;
-            font-size: 1.3em;
-            font-weight: 600;
-            cursor: pointer;
-            background: #8b6b4d;
-            color: #fdf3e0;
-            border: 3px solid #c9a959;
-            min-width: 180px;
-            font-family: 'Amiri', serif;
-            transition: all 0.3s ease;
-        }
-
-        .nav-btn:hover:not(:disabled) {
-            background: #c9a959;
-            color: #2c1810;
-            border-color: #2c1810;
-        }
-
-        .nav-btn:disabled {
-            opacity: 0.3;
-            cursor: not-allowed;
-        }
-
-        .result-card {
-            background: #fff5e6;
-            border-radius: 60px;
-            padding: 50px;
-            text-align: center;
-            box-shadow: 0 30px 50px rgba(44, 24, 16, 0.4);
-            margin: 25px 0;
-            border: 4px solid #8b6b4d;
-            position: relative;
-        }
-
-        .result-card::before {
-            content: '✿';
-            position: absolute;
-            top: -25px;
-            left: 50%;
-            transform: translateX(-50%);
-            background: #fdf3e0;
-            color: #c9a959;
-            font-size: 40px;
-            padding: 0 40px;
-        }
-
-        .result-score {
-            font-size: 5em;
-            color: #2c1810;
-            font-weight: 800;
-            margin: 25px 0;
+        
+        .anti-theft-message .laugh-emoji {
+            font-size: 7em;
             display: inline-block;
-            padding: 25px 70px;
-            background: linear-gradient(145deg, #fdf3e0, #fff5e6);
-            border-radius: 200px;
-            border: 5px solid #c9a959;
-            font-family: 'Amiri', serif;
+            animation: laughBounce 0.6s ease-in-out infinite, glitch 0.3s infinite;
+            filter: drop-shadow(0 0 15px #ff0000);
         }
-
-        .result-message {
-            font-size: 1.8em;
-            color: #2c1810;
+        
+        @keyframes laughBounce {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            25% { transform: translateY(-20px) rotate(-10deg); }
+            75% { transform: translateY(10px) rotate(10deg); }
+        }
+        
+        @keyframes glitch {
+            0%, 100% { text-shadow: -3px 0 #ff0000, 3px 0 #ff6600; }
+            25% { text-shadow: -5px 0 #ff0000, 5px 0 #ff6600; transform: skew(2deg); }
+            75% { text-shadow: -2px 0 #ff0000, 2px 0 #ff6600; transform: skew(-2deg); }
+        }
+        
+        .anti-theft-message h1 {
+            font-size: 4.5em;
+            color: #ff3333;
             margin: 25px 0;
-            font-family: 'Amiri', serif;
+            font-family: monospace;
+            letter-spacing: 5px;
+            animation: titleShake 0.2s infinite;
+            text-shadow: 3px 3px 0px #660000;
         }
-
-        .answers-review {
-            margin-top: 50px;
-            text-align: right;
-            max-height: 500px;
-            overflow-y: auto;
-            padding: 30px;
-            background: #fdf3e0;
-            border-radius: 40px;
-            border: 3px solid #8b6b4d;
+        
+        @keyframes titleShake {
+            0%, 100% { transform: translateX(0); }
+            25% { transform: translateX(-8px); }
+            75% { transform: translateX(8px); }
         }
-
-        .answer-item {
-            background: #fff5e6;
-            padding: 20px 25px;
-            margin-bottom: 15px;
-            border-radius: 25px;
-            border-right: 6px solid #c9a959;
+        
+        .anti-theft-message p {
+            font-size: 1.8em;
+            color: #ff8888;
+            margin: 18px 0;
+            font-weight: bold;
+            animation: textFlicker 1s infinite;
         }
-
-        .answer-item.correct-user {
-            border-right-color: #2c5f2d;
-            background: #f0f7e8;
+        
+        @keyframes textFlicker {
+            0%, 100% { opacity: 1; text-shadow: 0 0 5px #ff3333; }
+            50% { opacity: 0.7; text-shadow: 0 0 15px #ff3333; }
         }
-
-        .answer-item.wrong-user {
-            border-right-color: #9e2a2a;
-            background: #ffe8e8;
+        
+        .anti-theft-message .second-line {
+            font-size: 2em;
+            color: #ff6666;
+            animation: textFlicker 0.6s infinite;
         }
-
-        .footer-note {
-            text-align: center;
-            margin-top: 30px;
-            color: #8b6b4d;
-            font-size: 1.1em;
-            font-family: 'Amiri', serif;
-            border-top: 2px dotted #c9a959;
-            padding-top: 20px;
+        
+        .anti-theft-message .skull {
+            font-size: 4em;
+            margin: 20px 0;
+            animation: skullSpin 1s ease-in-out infinite;
+            filter: drop-shadow(0 0 10px #ff3300);
         }
-
-        @media (max-width: 700px) {
-            .container { padding: 20px; }
-            h1 { font-size: 2.2em; }
-            .main-menu { grid-template-columns: 1fr; }
-            .menu-btn.special { grid-column: span 1; }
-            .question-text { font-size: 1.2em; }
-            .option-btn { font-size: 1.1em; padding: 15px 25px; }
-            .result-score { font-size: 3em; padding: 15px 30px; }
+        
+        @keyframes skullSpin {
+            0%, 100% { transform: rotate(0deg) scale(1); }
+            25% { transform: rotate(15deg) scale(1.1); }
+            75% { transform: rotate(-15deg) scale(1.1); }
+        }
+        
+        .anti-theft-message .blink {
+            font-size: 2.5em;
+            color: #ff6666;
+            margin-top: 20px;
+            animation: blinkCursor 0.8s step-end infinite;
+            font-family: monospace;
+        }
+        
+        @keyframes blinkCursor {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0; }
+        }
+        
+        .anti-theft-message .decoration-line {
+            color: #ff6633;
+            font-size: 1.5em;
+            margin: 20px 0;
+            letter-spacing: 5px;
+            animation: linePulse 1s infinite;
+        }
+        
+        @keyframes linePulse {
+            0%, 100% { opacity: 0.5; letter-spacing: 5px; }
+            50% { opacity: 1; letter-spacing: 10px; text-shadow: 0 0 10px #ff6633; }
+        }
+        
+        .hidden-content {
+            display: none !important;
+        }
+        
+        /* منع تحديد النص */
+        .anti-theft-message {
+            user-select: none;
+            -webkit-user-select: none;
         }
     </style>
 </head>
 <body>
-    <div class="container" id="app">
-        <!-- شاشة التحميل -->
-        <div v-if="loading" class="loading">
-            <div style="font-size: 2em;">⏳</div>
-            <div>جاري تحميل الأسئلة...</div>
+    <!-- رسالة الاستهزاء - تظهر فقط إذا الملفات ناقصة -->
+    <div id="antiTheftMessage" class="anti-theft-message" style="display: none;">
+        <div class="troll-container">
+            <div>
+                <span class="laugh-emoji">😂😂😂</span>
+                <h1>هههههههههههههههه</h1>
+                <div class="decoration-line">═══════⟠═══════</div>
+                <p>مفكر حالك قوي بتحاول تسرق الموقع؟</p>
+                <p class="second-line">أقول ارجع وراك</p>
+                <div class="decoration-line">═══════⟠═══════</div>
+                <div class="skull">💀😈💀</div>
+                <p style="font-size: 1.3em;">مش بهالسهولة يالحبيب 😎</p>
+                <div class="blink">_</div>
+                <span class="laugh-emoji">🤣🤣🤣</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- المحتوى الحقيقي - يختفي إذا الملفات ناقصة -->
+    <div id="mainContent" class="container hidden-content">
+        <!-- الشاشة الرئيسية -->
+        <div id="menuScreen">
+            <h1>قسم التاريخ الأردني</h1>
+            <h2>اختر الاختبار الذي تريد</h2>
+            <div class="main-menu">
+                <button class="menu-btn" data-unit="political">🏛️ الحياة السياسية</button>
+                <button class="menu-btn" data-unit="economic">💼 الحياة الاقتصادية</button>
+                <button class="menu-btn" data-unit="social">👥 الحياة الاجتماعية</button>
+                <button class="menu-btn" data-unit="education">📖 التعليم والثقافة</button>
+                <button class="menu-btn" data-unit="palestine">🇵🇸 الأردن وفلسطين</button>
+                <button class="menu-btn special" id="comprehensiveBtn">📜 الامتحان الشامل (50 سؤال)</button>
+            </div>
+            <div class="footer-note">كل وحدة تحتوي على 20 سؤالاً | الشامل 50 سؤالاً عشوائياً</div>
         </div>
 
-        <!-- شاشة الخطأ -->
-        <div v-else-if="error" class="error">
-            <div style="font-size: 2em;">⚠️</div>
-            <div>{{ error }}</div>
-            <button class="back-btn" @click="loadQuestions" style="margin-top: 20px;">إعادة المحاولة</button>
-        </div>
-
-        <!-- المحتوى الرئيسي -->
-        <div v-else>
-            <!-- الصفحة الرئيسية -->
-            <div v-if="currentScreen === 'main'">
-                <h1>قسم التاريخ الأردني</h1>
-                <h2>اختر الاختبار الذي تريد</h2>
-                
-                <div class="main-menu">
-                    <button class="menu-btn" @click="startUnitTest('الحياة السياسية', 'political')">
-                        🏛️ الحياة السياسية في الأردن
-                    </button>
-                    <button class="menu-btn" @click="startUnitTest('الحياة الاقتصادية', 'economic')">
-                        💼 الحياة الاقتصادية في الأردن
-                    </button>
-                    <button class="menu-btn" @click="startUnitTest('الحياة الاجتماعية', 'social')">
-                        👥 الحياة الاجتماعية في الأردن
-                    </button>
-                    <button class="menu-btn" @click="startUnitTest('التعليم والثقافة', 'education')">
-                        📖 التعليم والثقافة في الأردن
-                    </button>
-                    <button class="menu-btn" @click="startUnitTest('الأردن والقضية الفلسطينية', 'palestine')">
-                        🇵🇸 الأردن والقضية الفلسطينية
-                    </button>
-                    <button class="menu-btn special" @click="startComprehensiveExam()">
-                        📜 الامتحان الشامل (50 سؤال)
-                    </button>
-                </div>
-                <div class="footer-note">
-                    كل وحدة تحتوي على 20 سؤالاً | الشامل 50 سؤالاً عشوائياً من جميع الوحدات
-                </div>
+        <!-- شاشة الاختبار والنتيجة -->
+        <div id="quizScreen" class="hidden">
+            <div class="unit-header">
+                <button class="back-btn" id="backToMenuBtn">🔙 الرجوع</button>
+                <span class="unit-title" id="unitTitle">الوحدة</span>
+                <span class="unit-stats" id="progressText">سؤال 1 / 20</span>
             </div>
 
-            <!-- شاشة الاختبار -->
-            <div v-if="currentScreen === 'quiz'">
-                <div class="unit-header">
-                    <button class="back-btn" @click="backToMain">🔙 الرجوع</button>
-                    <span class="unit-title">{{ unitName }}</span>
-                    <span style="width: 100px;"></span>
-                </div>
+            <!-- منطقة التحميل -->
+            <div id="loadingArea" class="loading-overlay hidden">
+                <div class="spinner"></div>
+                <p>جاري تحميل الأسئلة...</p>
+            </div>
 
+            <!-- منطقة الاختبار -->
+            <div id="quizArea" class="hidden">
                 <div class="quiz-container">
-                    <div class="question-header">
-                        <span class="question-number">سؤال {{ currentIndex + 1 }} / {{ totalQuestions }}</span>
-                        <div class="progress-bar">
-                            <div class="progress-fill" :style="{ width: ((currentIndex + 1) / totalQuestions * 100) + '%' }"></div>
-                        </div>
+                    <div class="progress-bar">
+                        <div class="progress-fill" id="progressFill"></div>
                     </div>
-
-                    <div class="question-text">
-                        {{ currentQuestion.question }}
-                    </div>
-
-                    <div class="options-grid">
-                        <button 
-                            v-for="(option, idx) in currentQuestion.options" 
-                            :key="idx"
-                            class="option-btn"
-                            :class="{ 'selected': selectedOptions[currentIndex] === option }"
-                            @click="selectAnswer(option)"
-                        >
-                            {{ option }}
-                        </button>
-                    </div>
-
+                    <div class="question-text" id="questionText">جاري التحميل...</div>
+                    <div class="options-grid" id="optionsContainer"></div>
                     <div class="nav-buttons">
-                        <button class="nav-btn" @click="previousQuestion" :disabled="currentIndex === 0">السابق</button>
+                        <button class="nav-btn" id="prevBtn">السابق</button>
                     </div>
                 </div>
             </div>
 
-            <!-- شاشة النتيجة -->
-            <div v-if="currentScreen === 'result'">
-                <div class="unit-header">
-                    <button class="back-btn" @click="backToMain">🔙 الرجوع</button>
-                    <span class="unit-title">النتيجة النهائية</span>
-                    <span style="width: 100px;"></span>
-                </div>
-                
+            <!-- منطقة النتيجة -->
+            <div id="resultArea" class="hidden">
                 <div class="result-card">
-                    <h1 style="border-bottom: none; margin-bottom: 20px;">نتيجة الاختبار</h1>
-                    
-                    <div class="result-score">
-                        {{ score }} / {{ totalQuestions }}
+                    <h1>نتيجة الاختبار</h1>
+                    <div class="result-score" id="scoreCard">
+                        <span id="scoreValue">0</span>
+                        <span> / </span>
+                        <span id="totalQuestionsValue">0</span>
                     </div>
-                    
-                    <div class="result-message">
-                        {{ getResultMessage }}
-                    </div>
-                    
-                    <div style="font-size: 1.5em; color: #2c1810; margin: 20px 0;">
-                        نسبة الإجابة الصحيحة: {{ ((score / totalQuestions) * 100).toFixed(1) }}%
-                    </div>
-
-                    <button class="back-btn" @click="backToMain" style="margin: 20px auto;">امتحان جديد</button>
-
+                    <div class="result-message" id="resultMessage"></div>
+                    <div class="result-percentage" id="resultPercentage"></div>
+                    <button class="back-btn" id="returnToMenuBtn">امتحان جديد</button>
                     <div class="answers-review">
-                        <h3 style="margin-bottom: 25px; color: #2c1810; font-size: 1.6em; text-align: center;">✧ مراجعة الإجابات ✧</h3>
-                        <div v-for="(item, index) in reviewAnswers" :key="index" 
-                             class="answer-item" 
-                             :class="{ 'correct-user': item.isCorrect, 'wrong-user': !item.isCorrect }">
-                            <strong style="color: #c9a959; font-size: 1.2em;">س{{ index + 1 }}:</strong>
-                            <div style="margin-top: 12px; padding-right: 20px;">
-                                <div style="color: #2c1810; margin-bottom: 8px;">{{ item.question }}</div>
-                                <div style="color: #2c1810; font-weight: 600;">إجابتك: 
-                                    <span :style="{ color: item.isCorrect ? '#2c5f2d' : '#9e2a2a' }">{{ item.userAnswer || 'لم تجب' }}</span>
-                                </div>
-                                <div style="color: #2c5f2d; font-weight: 600;">الإجابة الصحيحة: {{ item.correctAnswer }}</div>
-                            </div>
-                        </div>
+                        <h3>✧ مراجعة الإجابات ✧</h3>
+                        <div id="answersReview"></div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+    <script src="script.js" id="mainScript"></script>
     <script>
-        new Vue({
-            el: '#app',
-            data: {
-                loading: true,
-                error: null,
-                allQuestions: {
-                    political: [],
-                    economic: [],
-                    social: [],
-                    education: [],
-                    palestine: []
-                },
-                currentScreen: 'main',
-                unitName: '',
-                currentQuestions: [],
-                currentIndex: 0,
-                selectedOptions: [],
-                score: 0
-            },
-            computed: {
-                totalQuestions() {
-                    return this.currentQuestions.length;
-                },
-                currentQuestion() {
-                    return this.currentQuestions[this.currentIndex] || {};
-                },
-                reviewAnswers() {
-                    return this.currentQuestions.map((q, index) => ({
-                        question: q.question,
-                        userAnswer: this.selectedOptions[index] || 'لم يتم الإجابة',
-                        correctAnswer: q.correct,
-                        isCorrect: this.selectedOptions[index] === q.correct
-                    }));
-                },
-                getResultMessage() {
-                    const percentage = (this.score / this.totalQuestions) * 100;
-                    if (percentage >= 90) return 'ممتاز! حفظك الله للأردن وفلسطين';
-                    if (percentage >= 75) return 'جيد جداً! زادك الله علماً';
-                    if (percentage >= 50) return 'مقبول، واصل السير على نهج الأجداد';
-                    return 'حاول مرة أخرى، فالتاريخ ينتظرك';
-                }
-            },
-            mounted() {
-                this.loadQuestions();
-            },
-            methods: {
-                loadQuestions() {
-                    this.loading = true;
-                    this.error = null;
-                    
-                    fetch('questions.json')
-                        .then(response => {
-                            if (!response.ok) {
-                                throw new Error('فشل تحميل الأسئلة');
+        // نظام حماية ضد السرقة - يتحقق من وجود جميع الملفات
+        (function() {
+            const antiTheftMessage = document.getElementById('antiTheftMessage');
+            const mainContent = document.getElementById('mainContent');
+            
+            // التحقق من وجود ملف CSS
+            function isCSSLoaded() {
+                const styleSheets = document.styleSheets;
+                for (let i = 0; i < styleSheets.length; i++) {
+                    if (styleSheets[i].href && styleSheets[i].href.includes('style.css')) {
+                        try {
+                            const rules = styleSheets[i].cssRules;
+                            if (rules && rules.length > 0) {
+                                return true;
                             }
-                            return response.json();
-                        })
-                        .then(data => {
-                            this.allQuestions = data;
-                            this.loading = false;
-                        })
-                        .catch(err => {
-                            this.error = 'حدث خطأ في تحميل الأسئلة. تأكد من وجود ملف questions.json في نفس المجلد.';
-                            this.loading = false;
-                            console.error(err);
-                        });
-                },
-                
-                startUnitTest(name, unitKey) {
-                    this.unitName = name;
-                    this.currentQuestions = [...this.allQuestions[unitKey]];
-                    this.resetQuiz();
-                    this.currentScreen = 'quiz';
-                },
-                
-                startComprehensiveExam() {
-                    this.unitName = 'الامتحان الشامل';
-                    
-                    const allQuestions = [
-                        ...this.allQuestions.political,
-                        ...this.allQuestions.economic,
-                        ...this.allQuestions.social,
-                        ...this.allQuestions.education,
-                        ...this.allQuestions.palestine
-                    ];
-                    
-                    this.currentQuestions = this.shuffleArray([...allQuestions]).slice(0, 50);
-                    this.resetQuiz();
-                    this.currentScreen = 'quiz';
-                },
-                
-                shuffleArray(array) {
-                    for (let i = array.length - 1; i > 0; i--) {
-                        const j = Math.floor(Math.random() * (i + 1));
-                        [array[i], array[j]] = [array[j], array[i]];
-                    }
-                    return array;
-                },
-                
-                resetQuiz() {
-                    this.currentIndex = 0;
-                    this.selectedOptions = new Array(this.currentQuestions.length).fill(null);
-                    this.score = 0;
-                },
-                
-                selectAnswer(option) {
-                    if (this.selectedOptions[this.currentIndex] !== null) {
-                        const oldAnswer = this.selectedOptions[this.currentIndex];
-                        if (oldAnswer === this.currentQuestion.correct) {
-                            this.score--;
+                        } catch(e) {
+                            return false;
                         }
                     }
-                    
-                    this.$set(this.selectedOptions, this.currentIndex, option);
-                    
-                    if (option === this.currentQuestion.correct) {
-                        this.score++;
-                    }
-                    
-                    setTimeout(() => {
-                        if (this.currentIndex < this.totalQuestions - 1) {
-                            this.currentIndex++;
-                        } else {
-                            this.currentScreen = 'result';
-                        }
-                    }, 200);
-                },
-                
-                previousQuestion() {
-                    if (this.currentIndex > 0) {
-                        this.currentIndex--;
-                    }
-                },
-                
-                backToMain() {
-                    this.currentScreen = 'main';
-                    this.unitName = '';
-                    this.currentQuestions = [];
                 }
+                return false;
             }
-        });
+            
+            // التحقق من وجود جميع الملفات
+            async function checkAllFiles() {
+                const filesToCheck = ['style.css', 'script.js', 'questions.json'];
+                let allFilesExist = true;
+                
+                for (const file of filesToCheck) {
+                    try {
+                        const response = await fetch(file, { method: 'HEAD' });
+                        if (!response.ok) {
+                            allFilesExist = false;
+                            break;
+                        }
+                    } catch (error) {
+                        allFilesExist = false;
+                        break;
+                    }
+                }
+                
+                return allFilesExist;
+            }
+            
+            // انتظار قليل ثم التحقق
+            setTimeout(async () => {
+                const allFilesExist = await checkAllFiles();
+                const cssLoaded = isCSSLoaded();
+                const scriptLoaded = typeof window.ExamApp !== 'undefined';
+                
+                if (!allFilesExist || !cssLoaded || !scriptLoaded) {
+                    // عرض رسالة الاستهزاء
+                    antiTheftMessage.style.display = 'flex';
+                    mainContent.classList.add('hidden-content');
+                    
+                    // تغيير عنوان الصفحة
+                    document.title = '😂 Nice Try! 😂';
+                    
+                    // منع النقر بزر الماوس الأيمن
+                    document.addEventListener('contextmenu', function(e) {
+                        e.preventDefault();
+                        alert('هههههههههههه مفكر تحفظ الموقع؟ 😂');
+                        return false;
+                    });
+                    
+                    // منع محاولات فتح أدوات المطور
+                    document.addEventListener('keydown', function(e) {
+                        if (e.key === 'F12' || (e.ctrlKey && e.shiftKey && e.key === 'I') || (e.ctrlKey && e.key === 'u')) {
+                            e.preventDefault();
+                            alert('لا لا لا... 😂');
+                        }
+                    });
+                    
+                    // مسح الـ console وإضافة رسائل استهزاء
+                    console.clear();
+                    console.log('%c🚫 ممنوع السرقة 🚫', 'color: red; font-size: 25px; font-weight: bold;');
+                    console.log('%c🤣 شكلك مفكر حالك فاهم ههههههههه', 'color: orange; font-size: 18px;');
+                    console.log('%c😎 ارجع وراك يالحبيب', 'color: red; font-size: 20px; font-weight: bold;');
+                    
+                    // إضافة رموز طائرة في الشاشة
+                    setInterval(() => {
+                        const emojis = ['😂', '🤣', '💀', '😈', 'هههه', 'لا', 'تسرق', '😎', '🤡', '🃏'];
+                        const troll = document.createElement('div');
+                        troll.textContent = emojis[Math.floor(Math.random() * emojis.length)];
+                        troll.style.position = 'fixed';
+                        troll.style.left = Math.random() * window.innerWidth + 'px';
+                        troll.style.top = Math.random() * window.innerHeight + 'px';
+                        troll.style.fontSize = Math.random() * 50 + 25 + 'px';
+                        troll.style.opacity = '0.7';
+                        troll.style.pointerEvents = 'none';
+                        troll.style.zIndex = '10000';
+                        troll.style.animation = 'laughBounce 0.5s ease-out';
+                        troll.style.fontFamily = 'monospace';
+                        document.body.appendChild(troll);
+                        setTimeout(() => troll.remove(), 1500);
+                    }, 400);
+                } else {
+                    // جميع الملفات موجودة، عرض المحتوى الحقيقي
+                    antiTheftMessage.style.display = 'none';
+                    mainContent.classList.remove('hidden-content');
+                    
+                    // تهيئة التطبيق
+                    if (typeof window.ExamApp !== 'undefined' && window.ExamApp.init) {
+                        window.ExamApp.init();
+                    }
+                }
+            }, 1000);
+        })();
     </script>
 </body>
 </html>
